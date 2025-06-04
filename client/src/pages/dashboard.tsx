@@ -203,7 +203,7 @@ export default function Dashboard() {
                             <a href="#about">{t("hero.cta.more")}</a>
                         </Button>
                     </div>
-                    <Card className="overflow-hidden dark:border-white bg-slate-100 dark:bg-slate-800">
+                    <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-md overflow-hidden">
                         <CardHeader>
                             <CardTitle>{t("map.title")}</CardTitle>
                         </CardHeader>
