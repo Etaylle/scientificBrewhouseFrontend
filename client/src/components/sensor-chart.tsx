@@ -35,6 +35,7 @@ ChartJS.register(
     Filler
 );
 
+// @ts-ignore
 const normalizeSensorType = (type) => {
   switch (type) {
     case "fermentation": return "gaerung";
@@ -185,7 +186,7 @@ export function SensorChart({ sensorType, title, icon }) {
   }, [data, processedData, isLiveMode]);
 
   return (
-      <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+      <Card className="bg-card dark:bg-card border border-border dark:border-border shadow-sm">
         <CardHeader className="pb-3">
           <div className="flex justify-between items-center mb-4">
             <CardTitle className="flex items-center gap-2 text-lg">
@@ -197,7 +198,7 @@ export function SensorChart({ sensorType, title, icon }) {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between gap-4">
-            <div className="flex items-center bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
+            <div className="flex items-center bg-muted dark:bg-muted rounded-lg p-1">
               <Input
                   id={`date-${sensorType}`}
                   type="date"
@@ -206,7 +207,7 @@ export function SensorChart({ sensorType, title, icon }) {
                   disabled={isLiveMode}
               />
             </div>
-            <div className="flex bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
+            <div className="flex bg-muted dark:bg-muted rounded-lg p-1">
               <Button variant={isLiveMode ? "default" : "ghost"} onClick={() => setIsLiveMode(true)}>
                 {t("mode.live")}
               </Button>
