@@ -4,6 +4,9 @@ node_modules/
 # Backend folder
 brewhouse-backend/
 
+# IDE settings
+.idea/
+
 # Optional: OS generated files
 .DS_Store
 Thumbs.db
