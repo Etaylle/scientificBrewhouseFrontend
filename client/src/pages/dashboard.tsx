@@ -20,9 +20,12 @@ import {
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import heroImage from "@/components/img/hero.jpg";
+<<<<<<< HEAD
 import { blogPosts } from "@/components/blogPosts/blogPosts";
 import { BlogCard } from "@/components/ui/BlogCard";
 
+=======
+>>>>>>> origin/master
 
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
@@ -206,6 +209,7 @@ export default function Dashboard() {
 
                     </div>
                 </div>
+<<<<<<< HEAD
                 <section className="container mx-auto py-8 px-4">
         <h2 className="text-2xl font-bold mb-6 text-foreground">
             {t("blog.title") ?? "Bier Blog"}
@@ -216,6 +220,8 @@ export default function Dashboard() {
 ))}
         </div>
     </section>
+=======
+>>>>>>> origin/master
                 <div className="container mx-auto px-4 py-8 space-y-8">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Charts Section */}
