@@ -109,3 +109,7 @@
     opacity: 0.99;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

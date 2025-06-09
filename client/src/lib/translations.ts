@@ -60,10 +60,14 @@ export const translations = {
     "blog.title": "Bier Blog",
     "blog.readMore": "Mehr dazu",
     "blog.readLess": "Weniger anzeigen",
-
-
-
-
+    "about.title": "Über die Campus-Brauerei",
+    "about.text": "In unserer modernen Brauerei am FH Campus Wien vereinen wir traditionelles Handwerk mit innovativer Forschung. Studierende und Lehrende entwickeln gemeinsam neue Biersorten und optimieren Brauprozesse durch den Einsatz von IoT und Sensorik-Technologien.",
+    "beer.title": "Unser aktuelles Bier",
+    "gallery.title": "Unsere Gallerie",
+    "nav.gallery": "Galerie",
+    "beer.loadError": "Fehler beim Laden des Bieres.",
+    "beer.noActiveBeer": "Kein aktives Bier",
+    "beer.noImage": "Kein aktives Bier Bild"
   },
   en: {
     title: 'FH Campus Wien Brewhouse',
@@ -126,10 +130,14 @@ export const translations = {
     "blog.title": "Beer Blog",
     "blog.readMore": "Read more",
     "blog.readLess": "Show less",
-
-
-
-
+    "about.title": "About the FH Brewery",
+    "about.text": "In our modern brewery at FH Campus Wien, we combine traditional craftsmanship with innovative research. Students and faculty develop new beer styles and optimize brewing processes using IoT and sensor technologies.",
+    "beer.title": "Our Current Beer",
+    "gallery.title": "Our Gallery",
+    "nav.gallery": "Gallery",
+    "beer.loadError": "Error while loading the Beer",
+    "beer.noActiveBeer": "No active Beer",
+    "beer.noImage": "No Beer Image found"
   }
 };
 
