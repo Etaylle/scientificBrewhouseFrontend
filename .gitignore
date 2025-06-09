@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Backend folder
+brewhouse-backend/
+
+# Optional: OS generated files
+.DS_Store
+Thumbs.db
