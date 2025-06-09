@@ -34,3 +34,21 @@ export interface BeerRating {
   comment: string | null;
   createdAt: Date;
 }
+
+export interface BlogPost {
+  id: number;
+  category?: string;
+  title: {
+    de: string;
+    en: string;
+  };
+  shortText: {
+    de: string;
+    en: string;
+  };
+  fullText: {
+    de: string;
+    en: string;
+  };
+  image: string;
+}

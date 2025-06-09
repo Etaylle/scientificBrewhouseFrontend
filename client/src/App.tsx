@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
+// import BlogPage from "@/pages/Blog";
+
 
 function Router() {
   return (

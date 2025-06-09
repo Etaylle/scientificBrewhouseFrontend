@@ -56,6 +56,14 @@ export const translations = {
     "hero.cta.more": "Mehr erfahren",
     "map.title": "Standort der FH Brauerei",
     "footer.text": "© FH Campus Wien Brewhouse",
+    "nav.blog": "Blog",
+    "blog.title": "Bier Blog",
+    "blog.readMore": "Mehr dazu",
+    "blog.readLess": "Weniger anzeigen",
+
+
+
+
   },
   en: {
     title: 'FH Campus Wien Brewhouse',
@@ -114,6 +122,14 @@ export const translations = {
     "hero.cta.more": "Learn more",
     "map.title": "Location of the FH Brewery",
     "footer.text": "© FH Campus Wien Brewhouse",
+    "nav.blog": "Blog",
+    "blog.title": "Beer Blog",
+    "blog.readMore": "Read more",
+    "blog.readLess": "Show less",
+
+
+
+
   }
 };
 

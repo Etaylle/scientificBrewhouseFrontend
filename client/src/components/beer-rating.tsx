@@ -110,39 +110,42 @@ export function BeerRating() {
 
   if (isLoading) {
     return (
-      <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-        <CardContent className="pt-6">
-          <div className="animate-pulse space-y-4">
-            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-3/4"></div>
-            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-1/2"></div>
-          </div>
-        </CardContent>
-      </Card>
+        <Card className="bg-card dark:bg-card border-border dark:border-border">
+          <CardContent className="pt-6">
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 bg-muted dark:bg-muted rounded w-3/4"></div>
+              <div className="h-4 bg-muted dark:bg-muted rounded w-1/2"></div>
+            </div>
+          </CardContent>
+        </Card>
     );
   }
 
   return (
-    <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-          {t("rating.title")}
-        </CardTitle>
-      </CardHeader>
+      <Card className="bg-card dark:bg-card border-border dark:border-border">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold text-foreground dark:text-foreground">
+            {t("rating.title")}
+          </CardTitle>
+        </CardHeader>
       <CardContent>
         {/* Overall Rating Display */}
         <div className="mb-6 text-center">
-          <div className="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-2">
-            {ratingData?.durchschnitt || "0.0"}          </div>
+          <div className="text-3xl font-bold text-[hsl(var(--chart-1))] mb-2">
+            {ratingData?.durchschnitt || "0.0"}
+          </div>
+
           <div className="flex justify-center mb-2">
             {renderStars(Math.round(Number(ratingData?.durchschnitt) || 0))}          </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            {t("rating.basedOn")} {ratingData?.anzahl || 0} {t("rating.reviews")}          </p>
+          <p className="text-sm text-muted-foreground">
+            {t("rating.basedOn")} {ratingData?.anzahl || 0} {t("rating.reviews")}
+          </p>
         </div>
 
         {/* User Rating Form */}
-        <div className="border-t border-slate-200 dark:border-slate-700 pt-6 space-y-4">
+        <div className="border-t border-border dark:border-border pt-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2 text-slate-900 dark:text-slate-100">
+            <label className="block text-sm font-medium mb-2 text-foreground dark:text-foreground">
               {t("rating.yourRating")}:
             </label>
             <div className="flex gap-1">
@@ -151,12 +154,13 @@ export function BeerRating() {
           </div>
 
           <Button
-            onClick={handleSubmitRating}
-            disabled={submitRatingMutation.isPending || userRating === 0}
-            className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white"
+              onClick={handleSubmitRating}
+              disabled={submitRatingMutation.isPending || userRating === 0}
+              className="w-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--accent))] dark:bg-[hsl(var(--primary))] dark:hover:bg-[hsl(var(--primary)/0.7)] text-white"
           >
             {submitRatingMutation.isPending ? "Bewertung wird gesendet..." : t("rating.submit")}
           </Button>
+
         </div>
       </CardContent>
     </Card>
