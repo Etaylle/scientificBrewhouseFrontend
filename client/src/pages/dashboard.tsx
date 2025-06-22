@@ -171,15 +171,9 @@ export default function Dashboard() {
                                 />
 
                                 <SensorChart
-                                    sensorType="mashing"
-                                    title={t("charts.mashing")}
-                                    icon={<Activity className="w-5 h-5 text-blue-500"/>}
-                                />
-
-                                <SensorChart
-                                    sensorType="hopBoiling"
-                                    title={t("charts.hopBoiling")}
-                                    icon={<Activity className="w-5 h-5 text-orange-500"/>}
+                                    sensorType={["mashing", "hopBoiling"]}
+                                    title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
+                                    icon={<Activity className="w-5 h-5 text-indigo-500" />}
                                 />
 
                             </div>
