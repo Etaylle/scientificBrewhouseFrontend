@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
+import HistoricalPage from "@/pages/historical";
+
 // import BlogPage from "@/pages/Blog";
 
 
@@ -14,6 +16,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/historical" component={HistoricalPage} />
       <Route component={NotFound} />
     </Switch>
   );

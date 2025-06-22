@@ -48,6 +48,7 @@ export const translations = {
     "nav.dashboard": "Sensor-Dashboard",
     "nav.research": "Forschung & Lehre",
     "nav.contact": "Kontakt",
+    "nav.historical": "Historische Daten",
     "badge.fh": "FH Campus Wien",
     "hero.title": "Scientific Brewhouse der Hochschule Campus Wien",
     "hero.slide1.title": "Innovative Sensorik",
@@ -71,7 +72,9 @@ export const translations = {
     "nav.gallery": "Galerie",
     "beer.loadError": "Fehler beim Laden des Bieres.",
     "beer.noActiveBeer": "Kein aktives Bier",
-    "beer.noImage": "Kein aktives Bier Bild"
+    "beer.noImage": "Kein aktives Bier Bild",
+    "page.historicalTitle": "Historische Daten",
+    
   },
   en: {
     title: 'FH Campus Wien Brewhouse',
@@ -122,6 +125,7 @@ export const translations = {
     "nav.dashboard": "Sensor Dashboard",
     "nav.research": "Research & Teaching",
     "nav.contact": "Contact",
+    "nav.historical": "Historical Data",
     "badge.fh": "FH Campus Wien",
     "hero.title": "Scientific Brewhouse of FH Campus Wien",
     "hero.slide1.title": "Innovative Sensor Technology",
@@ -145,7 +149,8 @@ export const translations = {
     "nav.gallery": "Gallery",
     "beer.loadError": "Error while loading the Beer",
     "beer.noActiveBeer": "No active Beer",
-    "beer.noImage": "No Beer Image found"
+    "beer.noImage": "No Beer Image found",
+    "page.historicalTitle": "Historical Data",
   }
 };
 

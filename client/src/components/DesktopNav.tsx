@@ -16,6 +16,8 @@ export function DesktopNav() {
         { href: "#dashboard", label: t("nav.dashboard") },
         { href: "#currentBeer", label: t("nav.currentBeer") },
         { href: "#blog", label: t("nav.blog") },
+        { href: "/historical", label: t("nav.historical") },
+
     ];
 
     return (
