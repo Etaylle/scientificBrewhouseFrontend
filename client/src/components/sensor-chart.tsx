@@ -61,11 +61,10 @@ function getMetricsMap() {
       { key: "fuellstand", label: "metrics.level", color: "#8B5CF6", unit: "L", icon: <Gauge className="w-4 h-4" /> },
       { key: "stammwuerze", label: "metrics.gravity", color: "#F472B6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
     ],
-    hopfenkochen: [
-      { key: "dauer", label: "metrics.duration", color: "#06B6D4", unit: "min", icon: <Timer className="w-4 h-4" /> },
-    ],
+    hopfenkochen: [],
   };
 }
+
 
 // @ts-ignore
 export function SensorChart({ sensorType, title, icon }: {
