@@ -12,7 +12,7 @@ interface BeerRatingData {
   anzahl: number;
   durchschnitt: string;
 }
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export function BeerRating() {
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -20,13 +20,13 @@ export function BeerRating() {
   const [hoverRating, setHoverRating] = useState(0);
 
   const { data: activeBeer } = useQuery({
-    queryKey: ["/api/beer/active"],
+    queryKey: ["${API_BASE_URL}/beer/active"],
   });
 
   const { data: ratingData, isLoading } = useQuery({
-    queryKey: ["/api/review", activeBeer?.name],
+    queryKey: ["${API_BASE_URL}/review", activeBeer?.name],
     queryFn: async () => {
-      const res = await fetch(`/api/review/${activeBeer?.name}`);
+      const res = await fetch(`${API_BASE_URL}/review/${activeBeer?.name}`);
       if (!res.ok) throw new Error("Fehler beim Laden der Bewertungen");
       return res.json();
     },
@@ -36,7 +36,7 @@ export function BeerRating() {
 
   const submitRatingMutation = useMutation({
     mutationFn: async (data: { sterne: number }) => {
-      const res = await fetch(`/api/review/${activeBeer?.name}`, {
+      const res = await fetch(`${API_BASE_URL}/review/${activeBeer?.name}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export function BeerRating() {
       return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/review", activeBeer?.name] });
+      queryClient.invalidateQueries({ queryKey: ["${API_BASE_URL}/review", activeBeer?.name] });
       setUserRating(0);
       toast({
         title: "Bewertung gesendet",

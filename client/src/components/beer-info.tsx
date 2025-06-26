@@ -22,7 +22,7 @@ export function BeerInfo() {
   const { data: beer, isLoading, isError } = useQuery<Beer>({
     queryKey: ["active-beer"],
     queryFn: async () => {
-      const res = await fetch("/api/beer/active");
+      const res = await fetch("${API_BASE_URL}/beer/active");
       if (!res.ok) throw new Error("Fehler beim Laden des Bieres");
       return res.json();
     },

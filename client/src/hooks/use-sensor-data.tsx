@@ -4,15 +4,15 @@ export type SensorData = {
   timestamp: string;
   [key: string]: any;
 };
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export function useSensorData(
     sensorType: string,
     isLiveMode: boolean,
     selectedDate: Date
 ) {
   const endpoint = isLiveMode
-      ? `/api/live/${sensorType}`
-      : `/api/history/${sensorType}/${selectedDate.toISOString().split("T")[0]}`;
+      ? `${API_BASE_URL}/live/${sensorType}`
+      : `${API_BASE_URL}/history/${sensorType}/${selectedDate.toISOString().split("T")[0]}`;
 
   const {
     data: rawData,
