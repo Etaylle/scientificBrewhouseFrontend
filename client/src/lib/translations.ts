@@ -75,7 +75,8 @@ export const translations = {
     "beer.noActiveBeer": "Kein aktives Bier",
     "beer.noImage": "Kein aktives Bier Bild",
     "page.historicalTitle": "Historische Daten",
-    
+    'metrics.stammwuerze': 'Stammwürze'
+
   },
   en: {
     title: 'FH Campus Wien Brewhouse',
@@ -153,6 +154,7 @@ export const translations = {
     "beer.noActiveBeer": "No active Beer",
     "beer.noImage": "No Beer Image found",
     "page.historicalTitle": "Historical Data",
+    'metrics.stammwuerze': 'Original Gravity'
   }
 };
 

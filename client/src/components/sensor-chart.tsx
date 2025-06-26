@@ -40,68 +40,42 @@ ChartJS.register(
 const normalizeSensorType = (type) => {
   switch (type) {
     case "fermentation": return "gaerung";
-    case "mashing": return "maischen";
-    case "hopBoiling": return "hopfenkochen";
+    case "mashing": return "maischen"; 
+    case "hopBoiling": return "maischen";
     default: return type;
   }
 };
 
+
 // @ts-ignore
-function getMetricsMap() {
+function getMetricsMap(t) {
   return {
     gaerung: [
-      { key: "temperatur", label: "metrics.temperature", color: "#10B981", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
-      { key: "druck", label: "metrics.pressure", color: "#3B82F6", unit: "bar", icon: <Gauge className="w-4 h-4" /> },
-      { key: "stammwuerze", label: "metrics.gravity", color: "#F472B6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
-      { key: "alkohol", label: "metrics.alcohol", color: "#8B5CF6", unit: "%", icon: <Beer className="w-4 h-4" /> },
-      { key: "restextrakt", label: "metrics.extract", color: "#FCD34D", unit: "°P", icon: <Cloudy className="w-4 h-4" /> },
+      { key: "temperatur", label: t("metrics.temperature"), color: "#10B981", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
+      { key: "co2", label: t("metrics.co2"), color: "#F59E0B", unit: "%", icon: <Cloudy className="w-4 h-4" /> },
     ],
     maischen: [
-      { key: "temperatur", label: "metrics.temperature", color: "#3B82F6", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
-      { key: "fuellstand", label: "metrics.level", color: "#8B5CF6", unit: "L", icon: <Gauge className="w-4 h-4" /> },
-      { key: "stammwuerze", label: "metrics.gravity", color: "#F472B6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
+      { key: "temperatur", label: t("metrics.temperature"), color: "#3B82F6", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
+      { key: "stammwuerze", label: t("metrics.stammwuerze"), color: "#8B5CF6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
+      { key: "co2", label: t("metrics.co2"), color: "#F59E0B", unit: "%", icon: <Cloudy className="w-4 h-4" /> },
     ],
-    hopfenkochen: [],
   };
 }
 
 
+
 // @ts-ignore
-export function SensorChart({ sensorType, title, icon }: {
-  sensorType: string | string[],
-  title: string,
-  icon: JSX.Element
-}) {
+export function SensorChart({ sensorType, title, icon }) {
   const [isLiveMode, setIsLiveMode] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { t } = useLanguage();
   const { theme } = useTheme();
-  const sensorTypes = Array.isArray(sensorType) ? sensorType : [sensorType];
   const isDark = theme === "dark";
 
-  
+  const normalizedType = normalizeSensorType(sensorType);
   // @ts-ignore
-  const normalizedTypes = sensorTypes.map(normalizeSensorType);
-
-// Alle Metriken kombinieren
-const rawMetrics = normalizedTypes.flatMap((type) => getMetricsMap(t)[type] || []);
-const seen = new Set();
-const metrics = rawMetrics.filter((m) => {
-  const key = m.key;
-  if (seen.has(key)) return false;
-  seen.add(key);
-  return true;
-});
-
-
-// Daten für alle Prozesse holen
-const allDataResults = normalizedTypes.map((type) =>
-  useSensorData(type, isLiveMode, selectedDate)
-);
-
-// Zusammengeführte Daten
-const data = allDataResults.flatMap((res) => res.data || []);
-const isLoading = allDataResults.some((res) => res.isLoading);
+  const metrics = getMetricsMap(t)[normalizedType] || [];
+  const { data, isLoading } = useSensorData(normalizedType, isLiveMode, selectedDate);
 
   const processedData = useMemo(() => {
     if (!data || data.length === 0) return [];
@@ -145,19 +119,16 @@ const isLoading = allDataResults.some((res) => res.isLoading);
       console.log(`[DEBUG] ${metric.label}:`, points);
 
       return {
-        key: metric.key, 
-        label: t(metric.label).charAt(0).toUpperCase() + t(metric.label).slice(1),
+        label: metric.label,
         data: points,
         borderColor: metric.color,
         backgroundColor: metric.color + "20",
         borderWidth: 2,
-        tension: 0.4,
+        tension: 0.5,
         pointRadius: 0,
-        pointHoverRadius: 6,
-        spanGaps: true,
+        pointHoverRadius: 5,
         fill: false,
       };
-
     });
     return { datasets };
   }, [metrics, processedData]);
@@ -186,19 +157,13 @@ const isLoading = allDataResults.some((res) => res.isLoading);
         intersect: false,
         usePointStyle: true,
         callbacks: {
-          label: function (context) {
-    const label = context.dataset.label || "";
-      const value = context.parsed.y !== null ? context.parsed.y : "-";
-      const metric = metrics.find((m) => {
-      const translated = t(m.label).charAt(0).toUpperCase() + t(m.label).slice(1);
-     return translated === label;
-     });
-      const unit = metric ? metric.unit : "";
-      return `${label}: ${value}${unit}`;
-    }
-
-
-
+          label: function(context: { dataset: { label: string; }; parsed: { y: null; }; }) {
+            const label = context.dataset.label || "";
+            const value = context.parsed.y !== null ? context.parsed.y : "-";
+            const metric = metrics.find((m: { label: string; }) => m.label === label);
+            const unit = metric ? metric.unit : "";
+            return `${label}: ${value}${unit}`;
+          }
         }
       }
     },
@@ -226,19 +191,12 @@ const isLoading = allDataResults.some((res) => res.isLoading);
     },
   }), [isDark, isLiveMode, metrics]);
 
-  
-
+  const latest = processedData[processedData.length - 1] || {};
   // @ts-ignore
   const getValue = (key, unit) => {
-  // Rückwärts durchgehen, um letzten gültigen Wert für dieses Feld zu finden
-    for (let i = data.length - 1; i >= 0; i--) {
-      const val = data[i][key];
-      const num = typeof val === "string" ? parseFloat(val) : val;
-      if (num != null && !isNaN(num)) {
-       return `${key === "dauer" ? (num / 60).toFixed(1) : num.toFixed(1)}${unit}`;
-      }
-   }
-    return "-";
+    const raw = latest[key];
+    const num = typeof raw === "string" ? parseFloat(raw) : raw;
+    return num != null && !isNaN(num) ? `${key === "dauer" ? (num / 60).toFixed(1) : num.toFixed(1)}${unit}` : "-";
   };
 
   useEffect(() => {
@@ -289,10 +247,7 @@ const isLoading = allDataResults.some((res) => res.isLoading);
             {metrics.map((m) => (
                 <div key={m.key} className="flex items-center gap-1">
                   {m.icon}
-                  <span style={{ color: m.color }}>
-                   {t(m.label).charAt(0).toUpperCase() + t(m.label).slice(1)}: {getValue(m.key, m.unit)}
-                  </span>
-
+                  <span style={{ color: m.color }}>{getValue(m.key, m.unit)}</span>
                 </div>
             ))}
           </div>

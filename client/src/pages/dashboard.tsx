@@ -171,10 +171,11 @@ export default function Dashboard() {
                                 />
 
                                 <SensorChart
-                                    sensorType={["mashing", "hopBoiling"]}
+                                    sensorType={["maischen"]}
                                     title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
                                     icon={<Activity className="w-5 h-5 text-indigo-500" />}
                                 />
+
 
                             </div>
                             {/* Beer Information Panel */}
