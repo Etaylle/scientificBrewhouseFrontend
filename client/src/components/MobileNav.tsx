@@ -9,11 +9,11 @@ export function MobileNav() {
 
     const handleClick = (id: string) => {
         setOpen(false);
-        if (id.startsWith("/")) 
-            {
-        window.location.href = id;
-        return;
-    }
+        if (id.startsWith("/"))
+        {
+            window.location.href = id;
+            return;
+        }
 
         setTimeout(() => {
             const target = document.querySelector(id);
@@ -43,7 +43,7 @@ export function MobileNav() {
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Button variant="default" size="icon" className="mobile:hidden">
+                <Button variant="default" size="icon" className="md:hidden">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2"
                          viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"

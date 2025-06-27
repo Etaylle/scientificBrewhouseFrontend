@@ -22,7 +22,7 @@ export function DesktopNav() {
     ];
 
     return (
-        <NavigationMenu className="hidden mobile:flex">
+        <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
                 {navItems.map((item) => (
                     <NavigationMenuItem key={item.href}>
