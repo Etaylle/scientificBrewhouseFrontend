@@ -43,7 +43,7 @@ export function MobileNav() {
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Button variant="default" size="icon" className="md:hidden">
+                <Button variant="default" size="icon" className="mobile:hidden">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2"
                          viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"
