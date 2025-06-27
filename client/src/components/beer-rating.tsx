@@ -20,11 +20,17 @@ export function BeerRating() {
   const [hoverRating, setHoverRating] = useState(0);
 
   const { data: activeBeer } = useQuery({
-    queryKey: ["${API_BASE_URL}/beer/active"],
+    queryKey: [`${API_BASE_URL}/beer/active`],
+    queryFn: async () => {
+      const res = await fetch(`${API_BASE_URL}/beer/active`);
+      if (!res.ok) throw new Error("Fehler beim Laden des aktiven Bieres");
+      return res.json();
+    }
   });
 
+
   const { data: ratingData, isLoading } = useQuery({
-    queryKey: ["${API_BASE_URL}/review", activeBeer?.name],
+    queryKey: ["review", activeBeer?.name],
     queryFn: async () => {
       const res = await fetch(`${API_BASE_URL}/review/${activeBeer?.name}`);
       if (!res.ok) throw new Error("Fehler beim Laden der Bewertungen");
@@ -32,6 +38,7 @@ export function BeerRating() {
     },
     enabled: !!activeBeer,
   });
+
 
 
   const submitRatingMutation = useMutation({
@@ -47,7 +54,7 @@ export function BeerRating() {
       return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["${API_BASE_URL}/review", activeBeer?.name] });
+      queryClient.invalidateQueries({ queryKey: ["review", activeBeer?.name] });
       setUserRating(0);
       toast({
         title: "Bewertung gesendet",
