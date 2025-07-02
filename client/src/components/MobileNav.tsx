@@ -30,13 +30,11 @@ export function MobileNav() {
 
 
     const navItems = [
-        { href: "/", label: t("nav.home") },
         { href: "#about", label: t("nav.about") },
         { href: "#gallery", label: t("nav.gallery") },
         { href: "#dashboard", label: t("nav.dashboard") },
         { href: "#currentBeer", label: t("nav.currentBeer") },
         { href: "#blog", label: t("nav.blog") },
-        { href: "/historical", label: t("nav.historical") },
 
     ];
 

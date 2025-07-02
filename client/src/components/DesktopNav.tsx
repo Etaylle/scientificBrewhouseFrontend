@@ -11,24 +11,21 @@ export function DesktopNav() {
     const { t } = useLanguage();
 
     const navItems = [
-        { href: "/", label: t("nav.home") },
         { href: "#about", label: t("nav.about") },
         { href: "#gallery", label: t("nav.gallery") },
         { href: "#dashboard", label: t("nav.dashboard") },
         { href: "#currentBeer", label: t("nav.currentBeer") },
         { href: "#blog", label: t("nav.blog") },
-        { href: "/historical", label: t("nav.historical") },
-
     ];
 
     return (
         <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
+            <NavigationMenuList className="flex gap-4">
                 {navItems.map((item) => (
                     <NavigationMenuItem key={item.href}>
                         <NavigationMenuLink
                             href={item.href}
-                            className={navigationMenuTriggerStyle()}
+                            className="text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-muted dark:hover:bg-muted px-4 py-3 rounded-lg text-sm font-medium transition-colors"
                         >
                             {item.label}
                         </NavigationMenuLink>
