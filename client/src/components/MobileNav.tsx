@@ -9,8 +9,7 @@ export function MobileNav() {
 
     const handleClick = (id: string) => {
         setOpen(false);
-        if (id.startsWith("/"))
-        {
+        if (id.startsWith("/")) {
             window.location.href = id;
             return;
         }
@@ -18,7 +17,6 @@ export function MobileNav() {
         setTimeout(() => {
             const target = document.querySelector(id);
             if (target) {
-
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -28,20 +26,18 @@ export function MobileNav() {
         }, 200);
     };
 
-
     const navItems = [
         { href: "#about", label: t("nav.about") },
         { href: "#gallery", label: t("nav.gallery") },
         { href: "#dashboard", label: t("nav.dashboard") },
         { href: "#currentBeer", label: t("nav.currentBeer") },
         { href: "#blog", label: t("nav.blog") },
-
     ];
 
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Button variant="default" size="icon" className="md:hidden">
+                <Button variant="default" size="icon" className="lg:hidden">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2"
                          viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -52,13 +48,14 @@ export function MobileNav() {
 
             <SheetContent
                 side="top"
-                className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-6 justify-items-center"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-6 justify-items-center bg-background"
             >
+
                 {navItems.map((item) => (
                     <button
                         key={item.href}
                         onClick={() => handleClick(item.href)}
-                        className="w-full max-w-xs text-center text-lg font-medium text-foreground dark:text-foreground bg-muted/50 dark:bg-muted/40 hover:bg-muted dark:hover:bg-muted px-4 py-3 rounded-lg transition-colors"
+                        className="w-full max-w-xs text-center text-sm font-medium text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-accent hover:text-white dark:hover:bg-accent px-4 py-3 rounded-lg transition-colors"
                     >
                         {item.label}
                     </button>

@@ -26,6 +26,7 @@ import {HeroSection} from "@/components/HeroSection";
 import {GallerySection} from "@/components/GallerySection";
 import {MobileNav} from "@/components/MobileNav";
 import {DesktopNav} from "@/components/DesktopNav";
+import { MotionEffect } from "@/components/animate-ui/effects/motion-effect";
 
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
@@ -44,7 +45,8 @@ export default function Dashboard() {
     return (
         <div className="min-h-screen bg-background transition-colors duration-300">
             <header
-                className="bg-background dark:bg-background relative z-50 dropshadow shadow-lg  transition-colors duration-300">
+                className="bg-background dark:bg-background relative z-50 shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_4px_rgba(255,255,255,0.1)] transition-colors duration-300"
+            >
                 <div className="container mx-auto py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
@@ -154,7 +156,9 @@ export default function Dashboard() {
             <div id="portal-container" className="relative z-40"></div>
             <main>
                 <HeroSection/>
-                <AboutSection/>
+                <MotionEffect fade blur="10px" inViewOnce={false} transition={{duration: 0.5, ease: 'easeInOut',}} inView>
+                    <AboutSection/>
+                </MotionEffect>
                 <div className="container mx-auto px-4 py-8 space-y-8">
                     <section id="dashboard">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -169,13 +173,11 @@ export default function Dashboard() {
                                     title={t("charts.fermentation")}
                                     icon={<Activity className="w-5 h-5 text-green-500"/>}
                                 />
-
                                 <SensorChart
                                     sensorType={["maischen"]}
                                     title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
-                                    icon={<Activity className="w-5 h-5 text-indigo-500" />}
+                                    icon={<Activity className="w-5 h-5 text-indigo-500"/>}
                                 />
-
 
                             </div>
                             {/* Beer Information Panel */}
@@ -196,22 +198,73 @@ export default function Dashboard() {
                             ))}
                         </div>
                     </section>
-                    <Card
-                        className="bg-card dark:bg-card border border-border dark:border-border text-center shadow-md overflow-hidden">
-                        <CardHeader>
-                            <CardTitle>{t("map.title")}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="h-64 p-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1725.7312056103287!2d16.381232837066587!3d48.15957773499717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da95020cab6f1%3A0xa63b89ca9b34074b!2sDas%20Zehn!5e0!3m2!1sde!2sat!4v1749056609412!5m2!1sde!2sat"
-                                width="100%"
-                                height="100%"
-                                style={{border: 0}}
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </CardContent>
-                    </Card>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div className="lg:col-span-1 space-y-6">
+                            <Card className="bg-card dark:bg-card border border-border dark:border-border shadow-md overflow-hidden">
+                                <CardHeader>
+                                    <CardTitle>{t("location.title")}</CardTitle>
+                                </CardHeader>
+
+                                <CardContent className="text-left min-h-[30vh] space-y-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-4">
+                                            <div>
+                                                <h3 className="text-base font-semibold text-foreground mb-1">{t("location.header")}</h3>
+                                                <p className="text-sm text-muted-foreground">{t("location.name")}</p>
+                                                <p className="text-sm text-muted-foreground">{t("location.address")}</p>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-base font-semibold text-foreground mb-1">{t("location.special")}</h3>
+                                                <p className="text-sm text-muted-foreground">{t("location.specialItem")}</p>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-base font-semibold text-foreground mb-1">{t("location.social")}</h3>
+                                                <a
+                                                    className="text-blue-600 hover:underline text-sm"
+                                                    href="https://www.instagram.com/daszehn/?hl=en"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {t("location.instagram")}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <h3 className="text-base font-medium">{t("location.openingHoursTitle")}</h3>
+                                            <ul className="text-sm text-muted-foreground list-disc pl-4 space-y-1">
+                                                <li>{t("location.hours.monday")}</li>
+                                                <li>{t("location.hours.tuesday")}</li>
+                                                <li>{t("location.hours.wednesday")}</li>
+                                                <li>{t("location.hours.thursday")}</li>
+                                                <li>{t("location.hours.friday")}</li>
+                                                <li>{t("location.hours.saturday")}</li>
+                                                <li>{t("location.hours.sunday")}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+
+                        <div className="lg:col-span-1 space-y-6">
+                            <Card className="bg-card dark:bg-card border border-border dark:border-border shadow-md overflow-hidden h-full">
+                                <CardHeader>
+                                    <CardTitle>{t("map.title")}</CardTitle>
+                                </CardHeader>
+                                <CardContent className="p-0 h-[30vh]">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1725.7312056103287!2d16.381232837066587!3d48.15957773499717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da95020cab6f1%3A0xa63b89ca9b34074b!2sDas%20Zehn!5e0!3m2!1sde!2sat!4v1749056609412!5m2!1sde!2sat"
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                    ></iframe>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
                 </div>
 
             </main>
@@ -219,7 +272,7 @@ export default function Dashboard() {
             <footer className="bg-card dark:bg-card border-t border-border dark:border-border mt-12 py-6">
                 <div className="container mx-auto px-4 text-center">
                     <p className="text-sm text-muted-foreground">
-                        FOOTER TEST </p>
+                        FH CAMPUS WIEN </p>
                 </div>
             </footer>
         </div>

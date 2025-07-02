@@ -75,7 +75,25 @@ export const translations = {
     "beer.noActiveBeer": "Kein aktives Bier",
     "beer.noImage": "Kein aktives Bier Bild",
     "page.historicalTitle": "Historische Daten",
-    'metrics.stammwuerze': 'Stammwürze'
+    'metrics.stammwuerze': 'Stammwürze',
+    "location.title": "Das Zehn",
+    "location.header": "Standort",
+    "location.name": "FH Campus Wien",
+    "location.address": "Favoritenstraße 222, 1100 Wien",
+    "location.special": "Special",
+    "location.specialItem": "Wiener Lager – 3,50 €",
+    "location.social": "Social",
+    "location.instagram": "Instagram",
+    "location.openingHoursTitle": "Öffnungszeiten",
+    "location.hours.wednesday": "Mittwoch: 8:30 – 20:30 Uhr",
+    "location.hours.thursday": "Donnerstag: 8:30 – 20:30 Uhr",
+    "location.hours.friday": "Freitag: 8:30 – 20:30 Uhr",
+    "location.hours.saturday": "Samstag: 8:30 – 20:30 Uhr",
+    "location.hours.sunday": "Sonntag: Geschlossen",
+    "location.hours.monday": "Montag: Geschlossen",
+    "location.hours.tuesday": "Dienstag: 8:30 – 20:30 Uhr",
+    "location.mapTitle": "Standortkarte",
+
 
   },
   en: {
@@ -154,7 +172,25 @@ export const translations = {
     "beer.noActiveBeer": "No active Beer",
     "beer.noImage": "No Beer Image found",
     "page.historicalTitle": "Historical Data",
-    'metrics.stammwuerze': 'Original Gravity'
+    'metrics.stammwuerze': 'Original Gravity',
+    "location.title": "Das Zehn",
+    "location.header": "Location",
+    "location.name": "FH Campus Wien",
+    "location.address": "Favoritenstraße 222, 1100 Vienna",
+    "location.special": "Special",
+    "location.specialItem": "Wiener Lager – €3.50",
+    "location.social": "Social",
+    "location.instagram": "Instagram",
+    "location.openingHoursTitle": "Opening Hours",
+    "location.hours.wednesday": "Wednesday: 8:30am – 8:30pm",
+    "location.hours.thursday": "Thursday: 8:30am – 8:30pm",
+    "location.hours.friday": "Friday: 8:30am – 8:30pm",
+    "location.hours.saturday": "Saturday: 8:30am – 8:30pm",
+    "location.hours.sunday": "Sunday: Closed",
+    "location.hours.monday": "Monday: Closed",
+    "location.hours.tuesday": "Tuesday: 8:30am – 8:30pm",
+    "location.mapTitle": "Location Map",
+
   }
 };
 
