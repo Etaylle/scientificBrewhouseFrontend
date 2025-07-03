@@ -161,4 +161,5 @@ export default function BlogPage() {
          </>
     </BrewhouseLayout>
   );
+  
 }
