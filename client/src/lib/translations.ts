@@ -75,8 +75,31 @@ export const translations = {
     "beer.noActiveBeer": "Kein aktives Bier",
     "beer.noImage": "Kein aktives Bier Bild",
     "page.historicalTitle": "Historische Daten",
-    'metrics.stammwuerze': 'Stammwürze'
-
+    'metrics.stammwuerze': 'Stammwürze',
+     "blog.preview": "Vorschau",
+        "blog.read": "Lesen",
+        "blog.readFull": "Vollständig lesen",
+        "blog.close": "Schließen",
+        "blog.postNotFound": "Blogpost nicht gefunden",
+        "blog.postNotFoundMessage": "Der angeforderte Blogpost existiert nicht.",
+        "blog.back": "Zurück zum Blog",
+        "blog.brewingData": "Braudaten",
+        "blog.originalGravity": "Stammwürze",
+        "blog.finalGravity": "Endvergärung",
+        "blog.abv": "Alkohol",
+        "blog.ibu": "IBU",
+        "blog.srm": "SRM",
+        "blog.efficiency": "Effizienz",
+  
+    "blog.description": "Entdecken Sie unsere Brauprojekte, wissenschaftlichen Erkenntnisse und die Kunst der Bierherstellung",
+  
+    "blog.searchPlaceholder": "Suche nach Bierstilen, Zutaten, oder Techniken...",
+    "blog.featured": "Featured Brauprojekte",
+    "blog.allPosts": "Alle Brauprojekte",
+    "blog.projects": "Brauprojekte",
+    "blog.noPosts": "Keine Brauprojekte gefunden",
+    "blog.noPostsMessage": "Versuchen Sie andere Suchbegriffe oder Kategorien.",
+   
   },
   en: {
     title: 'FH Campus Wien Brewhouse',
@@ -154,7 +177,31 @@ export const translations = {
     "beer.noActiveBeer": "No active Beer",
     "beer.noImage": "No Beer Image found",
     "page.historicalTitle": "Historical Data",
-    'metrics.stammwuerze': 'Original Gravity'
+    'metrics.stammwuerze': 'Original Gravity',
+  
+    "blog.description": "Discover our brewing projects, scientific insights, and the art of beer making",
+    "blog.back": "Back to Blog",
+    "blog.searchPlaceholder": "Search for beer styles, ingredients, or techniques...",
+    "blog.featured": "Featured Brewing Projects",
+    "blog.allPosts": "All Brewing Projects",
+    "blog.projects": "Brewing Projects",
+    "blog.noPosts": "No Brewing Projects Found",
+    "blog.noPostsMessage": "Try different search terms or categories.",
+    "blog.read": "Read",
+    "blog.brewingData": "Brewing Data",
+    "blog.originalGravity": "Original Gravity",
+    "blog.finalGravity": "Final Gravity",
+    "blog.abv": "Alcohol",
+    "blog.ibu": "IBU",
+    "blog.srm": "SRM",
+    "blog.efficiency": "Efficiency",
+     "blog.preview": "Preview",
+      
+        "blog.readFull": "Read Full",
+        "blog.close": "Close",
+        "blog.postNotFound": "Blogpost not found",
+        "blog.postNotFoundMessage": "The requested blog post does not exist.",
+    
   }
 };
 

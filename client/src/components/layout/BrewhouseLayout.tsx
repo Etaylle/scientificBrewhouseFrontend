@@ -1,49 +1,35 @@
-import {useState} from "react";
-import {SensorChart} from "@/components/sensor-chart";
-import {BeerInfo} from "@/components/beer-info";
-import {BeerRating} from "@/components/beer-rating";
-import {useLanguage} from "@/components/language-provider";
-import {useTheme} from "@/components/theme-provider";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Label} from "@/components/ui/label";
-import {Badge} from "@/components/ui/badge";
-import {Factory, Moon, Sun, Activity} from "lucide-react";
-import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu";
-import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {blogPosts} from "@/components/blogPosts/blogPosts";
-import {BlogCard} from "@/components/ui/BlogCard";
-import {AboutSection} from "@/components/AboutSection";
-import {HeroSection} from "@/components/HeroSection";
-import {GallerySection} from "@/components/GallerySection";
-import {MobileNav} from "@/components/MobileNav";
-import {DesktopNav} from "@/components/DesktopNav";
-import { Link } from "wouter";
-
-export default function Dashboard() {
-    const {language, setLanguage, t} = useLanguage();
-    const {theme, toggleTheme} = useTheme();
-    const [isLiveMode, setIsLiveMode] = useState(true);
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-
-    const handleModeChange = (liveMode: boolean) => {
-        setIsLiveMode(liveMode);
+import { ReactNode } from "react";
+import { useLanguage } from "@/components/language-provider";
+import { useTheme } from "@/components/theme-provider";
+import { Button } from "@/components/ui/button";
+import { Moon, Sun } from "lucide-react";
+import { DesktopNav } from "@/components/DesktopNav";
+import { MobileNav } from "@/components/MobileNav";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
+import { HeroSection } from "@/components/HeroSection";
+export default function BrewhouseLayout({ children }: { children: ReactNode }) {
+  const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+  const [location] = useLocation();
+const showHero = location.startsWith("/blog");
+useEffect(() => {
+  if (location.startsWith("/blog")) {
+    const clickHandler = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest("a[href^='#']");
+      if (a) {
+        e.preventDefault();
+        // Statt window.location.href, benutze Wouter navigation:
+        window.location.assign("/" + a.getAttribute("href")); // z.B. "/#about"
+      }
     };
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  }
+}, [location]);
 
-    const formatDate = (dateString: string) => {
-        return new Date(dateString + 'T00:00:00');
-    };
-
-    return (
-        <div className="min-h-screen bg-background transition-colors duration-300">
+  return (
+   <div className="min-h-screen bg-background transition-colors duration-300">
             <header
                 className="bg-background dark:bg-background relative z-50 dropshadow shadow-lg  transition-colors duration-300">
                 <div className="container mx-auto py-4">
@@ -153,102 +139,11 @@ export default function Dashboard() {
                 </div>
             </header>
             <div id="portal-container" className="relative z-40"></div>
-            <main>
-                <HeroSection/>
-                <AboutSection/>
-                <div className="container mx-auto px-4 py-8 space-y-8">
-                    <section id="dashboard">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            {/* Charts Section */}
-                            <div className="lg:col-span-2 space-y-6">
-                                <h2 className="text-xl font-semibold text-foreground dark:text-foreground">
-                                    {t("charts.title")}
-                                </h2>
-                                {/* Sensor Charts - each with own controls */}
-                                <SensorChart
-                                    sensorType="fermentation"
-                                    title={t("charts.fermentation")}
-                                    icon={<Activity className="w-5 h-5 text-green-500"/>}
-                                />
-
-                                <SensorChart
-                                    sensorType={["maischen"]}
-                                    title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
-                                    icon={<Activity className="w-5 h-5 text-indigo-500" />}
-                                />
-
-
-                            </div>
-                            {/* Beer Information Panel */}
-                            <div id="currentBeer" className="space-y-6">
-                                <BeerInfo/>
-                                <BeerRating/>
-                            </div>
-                        </div>
-                    </section>
-                    <GallerySection/>
-                    <section id="blog" className="container mx-auto">
-  <h2 className="text-2xl font-bold mb-6 text-foreground">
-    {t("blog.title") ?? "Bier Blog"}
-  </h2>
-
-  {blogPosts.find((p) => p.featured) && (
-    <Card className="bg-card dark:bg-card border border-border dark:border-border shadow-lg overflow-hidden">
-      <div className="relative h-60 md:h-80">
-        <img
-          src={blogPosts.find((p) => p.featured)!.images[0]}
-          alt={blogPosts.find((p) => p.featured)!.title[language]}
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent p-6 flex flex-col justify-end">
-          <Badge className="mb-2 w-fit">
-            {blogPosts.find((p) => p.featured)!.category}
-          </Badge>
-          <h3 className="text-2xl font-bold text-white mb-2">
-            {blogPosts.find((p) => p.featured)!.title[language]}
-          </h3>
-          <p className="text-white text-sm mb-4 line-clamp-3">
-            {blogPosts.find((p) => p.featured)!.excerpt[language]}
-          </p>
-          <div>
-            <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white">
-              <Link to={`/blog/${blogPosts.find((p) => p.featured)!.slug}`}>
-                {t("blog.read") || "Zum Brauprojekt"}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
-  )}
-</section>
-
-                    <Card
-                        className="bg-card dark:bg-card border border-border dark:border-border text-center shadow-md overflow-hidden">
-                        <CardHeader>
-                            <CardTitle>{t("map.title")}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="h-64 p-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1725.7312056103287!2d16.381232837066587!3d48.15957773499717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da95020cab6f1%3A0xa63b89ca9b34074b!2sDas%20Zehn!5e0!3m2!1sde!2sat!4v1749056609412!5m2!1sde!2sat"
-                                width="100%"
-                                height="100%"
-                                style={{border: 0}}
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </CardContent>
-                    </Card>
-                </div>
-
-            </main>
-
-            <footer className="bg-card dark:bg-card border-t border-border dark:border-border mt-12 py-6">
-                <div className="container mx-auto px-4 text-center">
-                    <p className="text-sm text-muted-foreground">
-                        FOOTER TEST </p>
-                </div>
-            </footer>
-        </div>
-    );
+            {showHero && <HeroSection />}
+             {/* Seiteninhalt */}
+      <main className="container mx-auto px-4 py-8 max-w-5xl">
+        {children}
+      </main>
+    </div>
+  );
 }

@@ -8,15 +8,15 @@ import { LanguageProvider } from "@/components/language-provider";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
 import HistoricalPage from "@/pages/historical";
-
-// import BlogPage from "@/pages/Blog";
-
-
+import BlogPage from "@/pages/BlogPage";
+import BlogDetailWrapper from "@/components/BlogDetailWrapper";
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/historical" component={HistoricalPage} />
+     <Route path="/blog" component={BlogPage} />
+      <Route path="/blog/:slug" component={BlogDetailWrapper} />
       <Route component={NotFound} />
     </Switch>
   );

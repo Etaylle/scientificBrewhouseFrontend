@@ -36,19 +36,24 @@ export interface BeerRating {
 }
 
 export interface BlogPost {
-  id: number;
-  category?: string;
-  title: {
-    de: string;
-    en: string;
+  id: string;
+  slug: string;
+  title: { en: string; de: string };
+  excerpt: { en: string; de: string };
+  content: { en: string; de: string };
+  author: string;
+  date: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  featured: boolean;
+  images: string[];
+  brewingData: {
+    originalGravity: number;
+    finalGravity: number;
+    abv: number;
+    ibu: number;
+    srm: number;
+    efficiency: number;
   };
-  shortText: {
-    de: string;
-    en: string;
-  };
-  fullText: {
-    de: string;
-    en: string;
-  };
-  image: string;
-}
+};
