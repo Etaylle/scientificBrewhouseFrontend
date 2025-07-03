@@ -26,6 +26,8 @@ import {HeroSection} from "@/components/HeroSection";
 import {GallerySection} from "@/components/GallerySection";
 import {MobileNav} from "@/components/MobileNav";
 import {DesktopNav} from "@/components/DesktopNav";
+import { MotionEffect } from "@/components/animate-ui/effects/motion-effect";
+import { LanguageToggle } from "@/components/ui/language-toggle";
 import { Link } from "wouter";
 
 export default function Dashboard() {
@@ -45,7 +47,8 @@ export default function Dashboard() {
     return (
         <div className="min-h-screen bg-background transition-colors duration-300">
             <header
-                className="bg-background dark:bg-background relative z-50 dropshadow shadow-lg  transition-colors duration-300">
+                className="bg-background dark:bg-background relative z-50 shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_4px_rgba(255,255,255,0.1)] transition-colors duration-300"
+            >
                 <div className="container mx-auto py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
@@ -114,25 +117,7 @@ export default function Dashboard() {
 
 
                         <div className="flex items-center space-x-4">
-                            {/* Language Toggle */}
-                            <div className="flex bg-muted dark:bg-muted rounded-lg p-1">
-                                <Button
-                                    variant={language === "de" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("de")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    DE
-                                </Button>
-                                <Button
-                                    variant={language === "en" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("en")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    EN
-                                </Button>
-                            </div>
+                            <LanguageToggle language={language} setLanguage={setLanguage} />
 
                             {/* Theme Toggle */}
                             <Button
@@ -155,28 +140,23 @@ export default function Dashboard() {
             <div id="portal-container" className="relative z-40"></div>
             <main>
                 <HeroSection/>
-                <AboutSection/>
+                <MotionEffect fade blur="10px" inViewOnce={false} transition={{duration: 0.5, ease: 'easeInOut',}} inView>
+                    <AboutSection/>
+                </MotionEffect>
                 <div className="container mx-auto px-4 py-8 space-y-8">
                     <section id="dashboard">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            {/* Charts Section */}
                             <div className="lg:col-span-2 space-y-6">
-                                <h2 className="text-xl font-semibold text-foreground dark:text-foreground">
-                                    {t("charts.title")}
-                                </h2>
-                                {/* Sensor Charts - each with own controls */}
                                 <SensorChart
                                     sensorType="fermentation"
                                     title={t("charts.fermentation")}
                                     icon={<Activity className="w-5 h-5 text-green-500"/>}
                                 />
-
                                 <SensorChart
                                     sensorType={["maischen"]}
                                     title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
-                                    icon={<Activity className="w-5 h-5 text-indigo-500" />}
+                                    icon={<Activity className="w-5 h-5 text-indigo-500"/>}
                                 />
-
 
                             </div>
                             {/* Beer Information Panel */}
@@ -246,7 +226,7 @@ export default function Dashboard() {
             <footer className="bg-card dark:bg-card border-t border-border dark:border-border mt-12 py-6">
                 <div className="container mx-auto px-4 text-center">
                     <p className="text-sm text-muted-foreground">
-                        FOOTER TEST </p>
+                        FH CAMPUS WIEN </p>
                 </div>
             </footer>
         </div>

@@ -19,13 +19,13 @@ export function DesktopNav() {
     ];
 
     return (
-        <NavigationMenu className="hidden md:flex">
+        <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="flex gap-4">
                 {navItems.map((item) => (
                     <NavigationMenuItem key={item.href}>
                         <NavigationMenuLink
                             href={item.href}
-                            className="text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-muted dark:hover:bg-muted px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                            className="text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-accent hover:text-white dark:hover:bg-accent px-4 py-3 rounded-lg text-sm font-medium transition-colors"
                         >
                             {item.label}
                         </NavigationMenuLink>
