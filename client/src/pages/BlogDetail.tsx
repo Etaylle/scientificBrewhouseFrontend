@@ -11,7 +11,6 @@ import { useParams } from "wouter";
 import rehypeRaw from "rehype-raw";
 export default function BlogDetail({ post }: { post: BlogPost }) {
   const { t, language } = useLanguage();
-
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(language === "de" ? "de-DE" : "en-US", {
       year: "numeric",

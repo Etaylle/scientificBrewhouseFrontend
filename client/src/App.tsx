@@ -10,6 +10,7 @@ import NotFound from "@/pages/not-found";
 import HistoricalPage from "@/pages/historical";
 import BlogPage from "@/pages/BlogPage";
 import BlogDetailWrapper from "@/components/BlogDetailWrapper";
+
 function Router() {
   return (
     <Switch>

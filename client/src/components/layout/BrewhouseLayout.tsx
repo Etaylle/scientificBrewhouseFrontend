@@ -15,7 +15,6 @@ export default function BrewhouseLayout({ children }: { children: ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   const [location] = useLocation();
 const showHero = location.startsWith("/blog");
-
 useEffect(() => {
   if (location.startsWith("/blog")) {
     const clickHandler = (e: MouseEvent) => {

@@ -9,7 +9,6 @@ import { useLanguage } from "@/components/language-provider";
 import { blogPosts } from "@/components/blogPosts/blogPosts";
 import { ScrollToAnchor } from "@/components/ScrollToAnchor";
 const categories = ["Alle", "Brauprojekt", "Universitätsforschung", "Lager", "IPA", "Saison", "Weissbier"];
-
 export default function BlogPage() {
   const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("Alle");
