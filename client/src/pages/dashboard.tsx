@@ -27,6 +27,7 @@ import {GallerySection} from "@/components/GallerySection";
 import {MobileNav} from "@/components/MobileNav";
 import {DesktopNav} from "@/components/DesktopNav";
 import { MotionEffect } from "@/components/animate-ui/effects/motion-effect";
+import { LanguageToggle } from "@/components/ui/language-toggle";
 
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
@@ -115,25 +116,7 @@ export default function Dashboard() {
 
 
                         <div className="flex items-center space-x-4">
-                            {/* Language Toggle */}
-                            <div className="flex bg-muted dark:bg-muted rounded-lg p-1">
-                                <Button
-                                    variant={language === "de" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("de")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    DE
-                                </Button>
-                                <Button
-                                    variant={language === "en" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("en")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    EN
-                                </Button>
-                            </div>
+                            <LanguageToggle language={language} setLanguage={setLanguage} />
 
                             {/* Theme Toggle */}
                             <Button
@@ -162,12 +145,7 @@ export default function Dashboard() {
                 <div className="container mx-auto px-4 py-8 space-y-8">
                     <section id="dashboard">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            {/* Charts Section */}
                             <div className="lg:col-span-2 space-y-6">
-                                <h2 className="text-xl font-semibold text-foreground dark:text-foreground">
-                                    {t("charts.title")}
-                                </h2>
-                                {/* Sensor Charts - each with own controls */}
                                 <SensorChart
                                     sensorType="fermentation"
                                     title={t("charts.fermentation")}

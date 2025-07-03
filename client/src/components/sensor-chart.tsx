@@ -23,6 +23,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Activity, Thermometer, Droplets, Gauge, Beer, Cloudy, Timer } from "lucide-react";
 import { de } from 'date-fns/locale';
+import { Switch } from "@/components/ui/switch"
+
 
 ChartJS.register(
     CategoryScale,
@@ -206,11 +208,6 @@ export function SensorChart({ sensorType, title, icon }) {
   }, [data, processedData, isLiveMode]);
 
   // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
   return (
       <Card className="bg-card dark:bg-card border border-border dark:border-border shadow-sm">
         <CardHeader className="pb-3">
@@ -233,14 +230,21 @@ export function SensorChart({ sensorType, title, icon }) {
                   disabled={isLiveMode}
               />
             </div>
-            <div className="flex bg-muted dark:bg-muted rounded-lg p-1">
-              <Button variant={isLiveMode ? "default" : "ghost"} onClick={() => setIsLiveMode(true)}>
-                {t("mode.live")}
-              </Button>
-              <Button variant={!isLiveMode ? "default" : "ghost"} onClick={() => setIsLiveMode(false)}>
-                {t("mode.history")}
-              </Button>
+            <div className="flex items-center space-x-2">
+              <div
+                  className={`px-3 py-0.5 rounded-full text-sm font-medium transition-colors
+      ${isLiveMode ? 'bg-green-500 text-white' : 'bg-primary text-white'}`}
+              >
+                {isLiveMode ? t("mode.live") : t("mode.history")}
+              </div>
+              <Switch
+                  id={`mode-switch-${sensorType}`}
+                  checked={isLiveMode}
+                  onCheckedChange={setIsLiveMode}
+              />
             </div>
+
+
           </div>
 
           <div className="flex gap-4 mt-4 text-sm flex-wrap">

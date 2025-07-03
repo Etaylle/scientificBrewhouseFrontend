@@ -2,6 +2,7 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion";
 
 export function MobileNav() {
     const { t } = useLanguage();
@@ -38,10 +39,28 @@ export function MobileNav() {
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
                 <Button variant="default" size="icon" className="lg:hidden">
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2"
-                         viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round"
-                              d="M4 6h16M4 12h16M4 18h16"/>
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <motion.path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4 6h16"
+                            animate={open ? { rotate: 45, translateY: 6 } : { rotate: 0, translateY: 0 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                        <motion.path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4 12h16"
+                            animate={open ? { opacity: 0 } : { opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                        <motion.path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4 18h16"
+                            animate={open ? { rotate: -45, translateY: -6 } : { rotate: 0, translateY: 0 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
                     </svg>
                 </Button>
             </SheetTrigger>
@@ -50,12 +69,11 @@ export function MobileNav() {
                 side="top"
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-6 justify-items-center bg-background"
             >
-
                 {navItems.map((item) => (
                     <button
                         key={item.href}
                         onClick={() => handleClick(item.href)}
-                        className="w-full max-w-xs text-center text-sm font-medium text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-accent hover:text-white dark:hover:bg-accent px-4 py-3 rounded-lg transition-colors"
+                        className="w-full max-w-xs text-center text-base font-medium text-foreground dark:text-foreground bg-muted dark:bg-muted hover:bg-accent hover:text-white dark:hover:bg-accent px-4 py-3 rounded-lg transition-colors"
                     >
                         {item.label}
                     </button>
