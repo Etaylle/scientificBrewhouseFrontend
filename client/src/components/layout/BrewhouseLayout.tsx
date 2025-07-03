@@ -8,6 +8,8 @@ import { MobileNav } from "@/components/MobileNav";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { HeroSection } from "@/components/HeroSection";
+import { LanguageToggle } from "@/components/ui/language-toggle";
+
 export default function BrewhouseLayout({ children }: { children: ReactNode }) {
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
@@ -100,25 +102,8 @@ useEffect(() => {
 
 
                         <div className="flex items-center space-x-4">
-                            {/* Language Toggle */}
-                            <div className="flex bg-muted dark:bg-muted rounded-lg p-1">
-                                <Button
-                                    variant={language === "de" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("de")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    DE
-                                </Button>
-                                <Button
-                                    variant={language === "en" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setLanguage("en")}
-                                    className="px-3 py-1 text-sm"
-                                >
-                                    EN
-                                </Button>
-                            </div>
+                            <LanguageToggle language={language} setLanguage={setLanguage} />
+
 
                             {/* Theme Toggle */}
                             <Button
@@ -138,9 +123,6 @@ useEffect(() => {
                     </div>
                 </div>
             </header>
-            <div id="portal-container" className="relative z-40"></div>
-            {showHero && <HeroSection />}
-             {/* Seiteninhalt */}
       <main className="container mx-auto px-4 py-8 max-w-5xl">
         {children}
       </main>

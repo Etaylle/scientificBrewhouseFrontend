@@ -14,7 +14,6 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
-      <Route path="/historical" component={HistoricalPage} />
      <Route path="/blog" component={BlogPage} />
       <Route path="/blog/:slug" component={BlogDetailWrapper} />
       <Route component={NotFound} />
