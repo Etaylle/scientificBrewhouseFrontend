@@ -76,8 +76,6 @@ Dreher, der in jungen Jahren Studienreisen unternahm, lernte in Bayern die Vorte
 - **Bittere:** 18–30 IBU
 - **Farbe:** 18–30 EBC
 
-## Dein eigenes Wiener Lager brauen
-Noch nie gebraut? Unser **BierBrauSet Wiener Lager** ist ideal für Einsteiger! Für ein authentisches Wiener Lager in der 20–30 Liter-Klasse ist unser **Braupaket Edmund – Wiener Lager** perfekt geeignet. Viel Spaß beim Brauen und wie immer *allzeit Gut Sud!*
       `,
     },
     author: "https://mashcamp.shop/der-bierstil-wiener-lager/",
