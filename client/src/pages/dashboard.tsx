@@ -29,10 +29,8 @@ import {DesktopNav} from "@/components/DesktopNav";
 import {MotionEffect} from "@/components/animate-ui/effects/motion-effect";
 import {LanguageToggle} from "@/components/ui/language-toggle";
 import {Link} from "wouter";
-import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 export default function Dashboard() {
-    useScrollToHash();
     const {language, setLanguage, t} = useLanguage();
     const {theme, toggleTheme} = useTheme();
     const [isLiveMode, setIsLiveMode] = useState(true);
