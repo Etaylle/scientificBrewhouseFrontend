@@ -70,72 +70,69 @@ export function BeerInfo() {
             {t("beer.currentBeer")}
           </CardTitle>
         </CardHeader>
+
         <CardContent className="space-y-6">
-          {/* Beer Image */}
-          {beer.imageUrl ? (
-              <img
-                  src={beer.imageUrl}
-                  alt={beer.name}
-                  className="w-full h-48 object-cover rounded-lg shadow"
-              />
-          ) : (
-              <div className="h-48 bg-muted rounded-lg flex items-center justify-center text-muted-foreground">
-                {t("beer.noImage") ?? "Kein Bild verfügbar"}
+          {/* Obere Flexbox: Infos links, Bild rechts */}
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Linker Bereich: Text-Infos */}
+            <div className="flex-1 space-y-4">
+              {/* Beer Name & Type */}
+              <div className="space-y-1">
+                <h3 className="text-lg font-semibold text-[hsl(var(--chart-1))]">
+                  {beer.name}
+                </h3>
+                <p className="text-sm text-muted-foreground">{beer.type}</p>
               </div>
-          )}
 
-          {/* Beer Name & Type */}
-          <div className="space-y-1">
-            <h3 className="text-lg font-semibold text-[hsl(var(--chart-1))]">
-              {beer.name}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {beer.type}
-            </p>
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex justify-between">
+                  <span className="font-medium">{t("beer.abv")}</span>
+                  <span>{beer.abv}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">{t("beer.ibu")}</span>
+                  <span>{beer.ibu}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">{t("beer.og")}</span>
+                  <span>{beer.og}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">{t("beer.fg")}</span>
+                  <span>{beer.fg}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Rechter Bereich: Bild */}
+            {beer.imageUrl ? (
+                <div className="flex-1">
+                  <img
+                      src={beer.imageUrl}
+                      alt={beer.name}
+                      className="w-full h-full max-h-96 object-cover rounded-lg shadow"
+                  />
+                </div>
+            ) : (
+                <div className="flex-1 bg-muted rounded-lg flex items-center justify-center text-muted-foreground max-h-96">
+                  {t("beer.noImage") ?? "Kein Bild verfügbar"}
+                </div>
+            )}
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div className="flex justify-between">
-              <span className="font-medium">{t("beer.abv")}</span>
-              <span>{beer.abv}%</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-medium">{t("beer.ibu")}</span>
-              <span>{beer.ibu}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-medium">{t("beer.og")}</span>
-              <span>{beer.og}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-medium">{t("beer.fg")}</span>
-              <span>{beer.fg}</span>
-            </div>
-          </div>
-
-          {/* Description */}
+          {/* Beschreibung: Volle Breite */}
           <div>
-            <h4 className="font-medium mb-2 text-foreground">
-              {t("beer.description")}
-            </h4>
-            <p className="text-sm text-muted-foreground">
-              {beer.description}
-            </p>
+            <h4 className="font-medium mb-2 text-foreground">{t("beer.description")}</h4>
+            <p className="text-sm text-muted-foreground">{beer.description}</p>
           </div>
 
-          {/* Ingredients */}
+          {/* Ingredients: Volle Breite */}
           <div>
-            <h4 className="font-medium mb-2 text-foreground">
-              {t("beer.ingredients")}
-            </h4>
+            <h4 className="font-medium mb-2 text-foreground">{t("beer.ingredients")}</h4>
             <div className="flex flex-wrap gap-2">
               {beer.ingredients.map((ingredient, index) => (
-                  <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-muted text-foreground"
-                  >
+                  <Badge key={index} variant="secondary" className="bg-muted text-foreground">
                     {ingredient}
                   </Badge>
               ))}
