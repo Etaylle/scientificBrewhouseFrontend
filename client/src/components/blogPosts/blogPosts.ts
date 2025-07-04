@@ -113,11 +113,10 @@ Dreher, der in jungen Jahren Studienreisen unternahm, lernte in Bayern die Vorte
 (English summary coming soon.)
     `,
     de: `
-    <p class="text-sm text-center text-gray-500 italic mt-2">
+    
+<p className="text-sm text-gray-500 italic mt-2 pl-6">
   Anton Dreher Brauerei
 </p>
-
-
 
 ## Um 1840 stellte Anton Dreher das heimische Brauwesen mit technologischen Innovationen und der Einführung des untergärigen Brauverfahrens auf den Kopf. Sein „Klein-Schwechater Lagerbier” war das erste helle Lagerbier in Europa - und findet bis heute Nachahmer. ##
 
