@@ -37,6 +37,7 @@ useEffect(() => {
                 <div className="container mx-auto py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
+                            <a href="/">
                             <svg className="h-10 w-auto text-bg-primary m-0 p-0" fill="currentColor" id="Ebene_1"
                                  data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 312.13 83.05">
                                 <defs></defs>
@@ -96,6 +97,7 @@ useEffect(() => {
                                       d="M379.46,51.2c-.29-4.91-10.55-6.47-21.47-6.88-.1,0-.22-.4-.22-.4l1.14-.07,0-.59h-8l0,.59,1.14.07s-.12.39-.23.4c-10.91.41-21.18,2-21.46,6.88,0,0-3,.66-3.38,1.7V87.8l1.47,1.94,1.58,2.08v33.8a8,8,0,0,0,3,.44,11.77,11.77,0,0,0,3.14-.47l0-25.77,2.19,2.89,11.5,15.13a7.35,7.35,0,0,0,10.31,0l11.49-15.13,2.33-3.06,0,25.95a12.34,12.34,0,0,0,3.19.46,7.27,7.27,0,0,0,2.82-.37V91.76l1.53-2,1.47-1.94V52.9C382.5,51.86,379.46,51.2,379.46,51.2Zm-2.63,34.58-5.58,7.35-4.52,6-11.87,14.84L343,99.08l-4.52-6-5.58-7.35v-29l3.1-.67.2-3.42c1.26-.64,5.11-2,15.77-2.38h5.8c10.66.41,14.51,1.74,15.77,2.38l.2,3.42,3.1.67Z"
                                       transform="translate(-70.71 -43.26)"/>
                             </svg>
+                            </a>
                         </div>
 
                         <DesktopNav/>
@@ -123,7 +125,7 @@ useEffect(() => {
                     </div>
                 </div>
             </header>
-      <main className="container mx-auto px-4 py-8 max-w-5xl">
+      <main className="mx-auto">
         {children}
       </main>
     </div>

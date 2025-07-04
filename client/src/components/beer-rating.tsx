@@ -153,7 +153,7 @@ export function BeerRating() {
         <div className="border-t border-border dark:border-border pt-6 space-y-4">
           <div>
             <label className="block text-sm font-medium mb-2 text-foreground dark:text-foreground">
-              {t("rating.yourRating")}:
+              {t("rating.yourRating")}
             </label>
             <div className="flex gap-1">
               {renderInteractiveStars()}

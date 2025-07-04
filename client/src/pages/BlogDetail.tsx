@@ -33,7 +33,7 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-amber-900">
-      <div className="container mx-auto px-4 py-8 max-w-5xl">
+      <div className="container mx-auto px-4 py-8">
         <Button
           asChild
           variant="outline"
