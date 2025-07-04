@@ -16,7 +16,6 @@ export function BeerInfo() {
     description: string;
     ingredients: string[];
     imageUrl: string;
-    brewStage: "mashing" | "hopBoiling" | "fermentation" | "conditioning";
   };
 
   const { data: beer, isLoading, isError } = useQuery<Beer>({
@@ -95,23 +94,22 @@ export function BeerInfo() {
             </p>
           </div>
 
-
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex justify-between">
-              <span className="font-medium">ABV:</span>
+              <span className="font-medium">{t("beer.abv")}</span>
               <span>{beer.abv}%</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-medium">IBU:</span>
+              <span className="font-medium">{t("beer.ibu")}</span>
               <span>{beer.ibu}</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-medium">OG:</span>
+              <span className="font-medium">{t("beer.og")}</span>
               <span>{beer.og}</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-medium">FG:</span>
+              <span className="font-medium">{t("beer.fg")}</span>
               <span>{beer.fg}</span>
             </div>
           </div>
