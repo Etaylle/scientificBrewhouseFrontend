@@ -73,10 +73,8 @@ export function BeerInfo() {
 
         <CardContent className="space-y-6">
           {/* Obere Flexbox: Infos links, Bild rechts */}
-          <div className="flex flex-col md:flex-row gap-6">
-            {/* Linker Bereich: Text-Infos */}
-            <div className="flex-1 space-y-4">
-              {/* Beer Name & Type */}
+          <div className="flex flex-row gap-6 items-stretch">
+            <div className="flex-[2] space-y-4">
               <div className="space-y-1">
                 <h3 className="text-lg font-semibold text-[hsl(var(--chart-1))]">
                   {beer.name}
@@ -84,8 +82,7 @@ export function BeerInfo() {
                 <p className="text-sm text-muted-foreground">{beer.type}</p>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-1 gap-4 text-sm">
                 <div className="flex justify-between">
                   <span className="font-medium">{t("beer.abv")}</span>
                   <span>{beer.abv}%</span>
@@ -105,13 +102,12 @@ export function BeerInfo() {
               </div>
             </div>
 
-            {/* Rechter Bereich: Bild */}
             {beer.imageUrl ? (
-                <div className="flex-1">
+                <div className="flex-[1] flex">
                   <img
                       src={beer.imageUrl}
                       alt={beer.name}
-                      className="w-full h-full max-h-96 object-cover rounded-lg shadow"
+                      className="w-full h-full object-cover"
                   />
                 </div>
             ) : (
@@ -121,13 +117,11 @@ export function BeerInfo() {
             )}
           </div>
 
-          {/* Beschreibung: Volle Breite */}
           <div>
             <h4 className="font-medium mb-2 text-foreground">{t("beer.description")}</h4>
             <p className="text-sm text-muted-foreground">{beer.description}</p>
           </div>
 
-          {/* Ingredients: Volle Breite */}
           <div>
             <h4 className="font-medium mb-2 text-foreground">{t("beer.ingredients")}</h4>
             <div className="flex flex-wrap gap-2">
