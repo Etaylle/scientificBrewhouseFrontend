@@ -83,7 +83,7 @@ Dreher, der in jungen Jahren Studienreisen unternahm, lernte in Bayern die Vorte
     readTime: "6 min",
     category: "Lager",
     tags: ["Wiener Lager", "Bierstil", "Traditionell"],
-    featured: true,
+    featured: false,
     images: ["/images/wiener-lager.jpg"],
     brewingData: {
       originalGravity: 1.048,
@@ -113,7 +113,7 @@ Dreher, der in jungen Jahren Studienreisen unternahm, lernte in Bayern die Vorte
 (English summary coming soon.)
     `,
     de: `
-![Anton Dreher Brauerei]("images/revolution-in-klein-schwechat.jpg")
+/* ![Anton Dreher Brauerei]("images/revolution-in-klein-schwechat.jpg") */
 
 
 ## Um 1840 stellte Anton Dreher das heimische Brauwesen mit technologischen Innovationen und der Einführung des untergärigen Brauverfahrens auf den Kopf. Sein „Klein-Schwechater Lagerbier” war das erste helle Lagerbier in Europa - und findet bis heute Nachahmer. ##
@@ -199,7 +199,7 @@ Anton Dreher auf Wien Geschichte Wiki.`
   readTime: "10 min",
   category: "Lager",
   tags: ["Wiener Lager", "Geschichte", "Anton Dreher", "Schwechat"],
-  featured: false,
+  featured: true,
   images: ["/images/revolution-in-klein-schwechat.jpg"], 
    brewingData: {
       originalGravity: 1.048,
