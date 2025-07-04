@@ -13,22 +13,29 @@ import { LanguageToggle } from "@/components/ui/language-toggle";
 export default function BrewhouseLayout({ children }: { children: ReactNode }) {
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
-  const [location] = useLocation();
-const showHero = location.startsWith("/blog");
+  const [location, setLocation] = useLocation();
+  const showHero = location.startsWith("/blog");
+  
 useEffect(() => {
-  if (location.startsWith("/blog")) {
-    const clickHandler = (e: MouseEvent) => {
-      const a = (e.target as HTMLElement).closest("a[href^='#']");
-      if (a) {
-        e.preventDefault();
-        // Statt window.location.href, benutze Wouter navigation:
-        window.location.assign("/" + a.getAttribute("href")); // z.B. "/#about"
-      }
-    };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  }
-}, [location]);
+    if (location.startsWith("/blog")) {
+      const clickHandler = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const link = target.closest("a[href^='#'], button[data-href^='#']");
+        
+        if (link) {
+          e.preventDefault();
+          const href = link.getAttribute("href") || link.getAttribute("data-href");
+          if (href) {
+            // Navigiere zur Hauptseite mit Hash
+            setLocation("/" + href); // z.B. "/#about"
+          }
+        }
+      };
+      
+      document.addEventListener("click", clickHandler);
+      return () => document.removeEventListener("click", clickHandler);
+    }
+  }, [location, setLocation]);
 
   return (
    <div className="min-h-screen bg-background transition-colors duration-300">
