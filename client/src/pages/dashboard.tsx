@@ -184,7 +184,7 @@ export default function Dashboard() {
                     <GallerySection/>
                     <section id="blog" className="container mx-auto">
                         <h2 className="text-2xl font-bold mb-6 text-foreground">
-                            {t("blog.title") ?? "Hervorgehoben im Bier-Blog"}
+                            {t("blog.dashboardTitle") ?? "Bier Blog"}
                         </h2>
 
                         {blogPosts.find((p) => p.featured) && (
