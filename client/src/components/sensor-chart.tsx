@@ -54,12 +54,15 @@ function getMetricsMap(t) {
   return {
     gaerung: [
       { key: "temperatur", label: t("metrics.temperature"), color: "#10B981", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
-      { key: "co2", label: t("metrics.co2"), color: "#F59E0B", unit: "%", icon: <Cloudy className="w-4 h-4" /> },
+      { key: "druck", label: t("metrics.pressure"), color: "#F59E0B", unit: "bar", icon: <Gauge className="w-4 h-4" /> },
+      { key: "stammwuerze", label: t("metrics.stammwuerze"), color: "#8B5CF6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
+      { key: "alkohol", label: t("metrics.alcohol"), color: "#EF4444", unit: "%", icon: <Beer className="w-4 h-4" /> },
+      { key: "restextrakt", label: t("metrics.extract"), color: "#3B82F6", unit: "%", icon: <Cloudy className="w-4 h-4" /> },
     ],
     maischen: [
-      { key: "temperatur", label: t("metrics.temperature"), color: "#3B82F6", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
+      { key: "temperatur", label: t("metrics.temperature"), color: "#10B981", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
+      { key: "fuellstand", label: t("metrics.fuellstand"), color: "#F59E0B", unit: "%", icon: <Gauge className="w-4 h-4" /> },
       { key: "stammwuerze", label: t("metrics.stammwuerze"), color: "#8B5CF6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
-      { key: "co2", label: t("metrics.co2"), color: "#F59E0B", unit: "%", icon: <Cloudy className="w-4 h-4" /> },
     ],
   };
 }
@@ -108,15 +111,14 @@ export function SensorChart({ sensorType, title, icon }) {
       const points = processedData.map((d) => {
         const raw = d[metric.key];
         const val = typeof raw === "string" ? parseFloat(raw) : raw;
-        if (val == null || isNaN(val)) return null;
+
         return {
           x: new Date(d.timestamp),
-          y: metric.key === "dauer"
-              ? parseFloat((val / 60).toFixed(2))
-              : parseFloat(val.toFixed(2)),
-
+          y: val != null && !isNaN(val)
+              ? (metric.key === "dauer" ? parseFloat((val / 60).toFixed(2)) : parseFloat(val.toFixed(2)))
+              : null,
         };
-      }).filter(Boolean);
+      });
 
       console.log(`[DEBUG] ${metric.label}:`, points);
 
