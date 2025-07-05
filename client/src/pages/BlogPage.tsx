@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BrewhouseLayout from "@/components/layout/BrewhouseLayout";
-import { BlogCard } from "@/components/ui/BlogCard"; // Import your BlogCard component
+import { BlogCard } from "@/components/ui/BlogCard";
 import { Beer, Award, Search, Filter } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { blogPosts } from "@/components/blogPosts/blogPosts";

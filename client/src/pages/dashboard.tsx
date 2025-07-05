@@ -30,7 +30,7 @@ import {MotionEffect} from "@/components/animate-ui/effects/motion-effect";
 import {LanguageToggle} from "@/components/ui/language-toggle";
 import {Link} from "wouter";
 import { useEffect } from "react";
-import { InstagramCard } from "@/components/instagramCard";
+import { InstagramCard } from "@/components/InstagramCard"
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
     const {theme, toggleTheme} = useTheme();
