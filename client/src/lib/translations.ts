@@ -143,7 +143,7 @@ Die Brauanlage ermöglicht eine Vielzahl an praktischen Übungen, wie die Parame
         "beer.ibu": "Bitterkeit (IBU)",
         "beer.og": "Stammwürze (OG)",
         "beer.fg": "Endvergärung (FG)",
-        "blog.dashboardTitle": "Empfolen aus dem Bier Blog",
+        "blog.dashboardTitle": "Empfohlen aus dem Bier Blog",
         "blog.description": "Entdecken Sie unsere Brauprojekte, wissenschaftlichen Erkenntnisse und die Kunst der Bierherstellung",
         "blog.searchPlaceholder": "Suche nach Bierstilen, Zutaten, oder Techniken...",
         "blog.featured": "Hervorgehoben",
