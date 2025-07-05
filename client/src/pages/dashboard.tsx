@@ -29,6 +29,7 @@ import {DesktopNav} from "@/components/DesktopNav";
 import {MotionEffect} from "@/components/animate-ui/effects/motion-effect";
 import {LanguageToggle} from "@/components/ui/language-toggle";
 import {Link} from "wouter";
+import { useEffect } from "react";
 
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
@@ -43,6 +44,19 @@ export default function Dashboard() {
     const formatDate = (dateString: string) => {
         return new Date(dateString + 'T00:00:00');
     };
+
+    useEffect(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Timeout nötig, weil DOM erst gerendert werden muss
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100); // 100 ms Verzögerung, schauen wir ob es schön ist und später vielleicht ändern
+      }
+    }, []);
 
     return (
         <div className="min-h-screen bg-background transition-colors duration-300">
@@ -170,7 +184,7 @@ export default function Dashboard() {
                     <GallerySection/>
                     <section id="blog" className="container mx-auto">
                         <h2 className="text-2xl font-bold mb-6 text-foreground">
-                            {t("blog.title") ?? "Bier Blog"}
+                            {t("blog.title") ?? "Hervorgehoben im Bier-Blog"}
                         </h2>
 
                         {blogPosts.find((p) => p.featured) && (
@@ -195,7 +209,9 @@ export default function Dashboard() {
                                         </p>
                                         <div>
                                             <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white">
-                                                <Link to={`/blog/${blogPosts.find((p) => p.featured)!.slug}`}>
+                                                <Link 
+                                                    to={`/blog/${blogPosts.find((p) => p.featured)!.slug}`}
+                                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                                     {t("blog.read") || "Zum Brauprojekt"}
                                                 </Link>
                                             </Button>

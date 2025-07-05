@@ -63,7 +63,7 @@ export const translations = {
         "map.title": "Standort der FH Brauerei",
         "footer.text": "© FH Campus Wien Brewhouse",
         "nav.blog": "Blog",
-        "blog.title": "Bier Blog",
+        "blog.title": "Featured in Bier Blog",
         "blog.readMore": "Mehr dazu",
         "blog.readLess": "Weniger anzeigen",
         "about.title": "Über die Campus-Brauerei",
