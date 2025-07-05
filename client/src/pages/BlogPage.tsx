@@ -53,7 +53,7 @@ export default function BlogPage() {
     <>
         <ScrollToAnchor />
       <div className="bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-amber-900">
-        <div className="relative bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white pt-24 pb-20">
+        <div className="relative bg-gradient-to-r from-amber-500 via-orange-600 to-amber-900 text-white pt-24 pb-20">
           <div className="absolute inset-0 bg-black/20 z-10"></div>
           <div className="absolute inset-0 opacity-10 z-0">
             <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
