@@ -3,18 +3,28 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
 export function MobileNav() {
     const { t } = useLanguage();
     const [open, setOpen] = useState(false);
+    const [location, setLocation] = useLocation();
 
     const handleClick = (id: string) => {
         setOpen(false);
+        
         if (id.startsWith("/")) {
-            window.location.href = id;
+            setLocation(id);
+            return;
+        }
+        
+        // Wenn wir auf einer Blog-Seite sind und Hash-Link klicken
+        if (location.startsWith("/blog")) {
+            setLocation("/" + id); // z.B. "/#about"
             return;
         }
 
+        // Normales Scroll-Verhalten für Hash-Links auf Hauptseite
         setTimeout(() => {
             const target = document.querySelector(id);
             if (target) {
@@ -26,7 +36,6 @@ export function MobileNav() {
             }
         }, 200);
     };
-
     const navItems = [
         { href: "#about", label: t("nav.about") },
         { href: "#gallery", label: t("nav.gallery") },

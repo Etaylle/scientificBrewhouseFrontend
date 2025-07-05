@@ -1,6 +1,6 @@
 export const translations = {
     de: {
-        title: 'FH Campus Wien Brewhouse',
+        title: 'Scientific Brewhouse an der FH Campus Wien',
         subtitle: 'Live Brauprozess Überwachung',
         'charts.title': 'Sensordaten Visualisierung',
         'charts.dateLabel': 'Datum wählen:',
@@ -63,11 +63,60 @@ export const translations = {
         "map.title": "Standort der FH Brauerei",
         "footer.text": "© FH Campus Wien Brewhouse",
         "nav.blog": "Blog",
+        
         "blog.title": "Bier Blog",
         "blog.readMore": "Mehr dazu",
         "blog.readLess": "Weniger anzeigen",
-        "about.title": "Über die Campus-Brauerei",
-        "about.text": "In unserer modernen Brauerei am FH Campus Wien vereinen wir traditionelles Handwerk mit innovativer Forschung. Studierende und Lehrende entwickeln gemeinsam neue Biersorten und optimieren Brauprozesse durch den Einsatz von IoT und Sensorik-Technologien.",
+        "about.title": "Über das Scientific Brewhouse",
+        "about.text": "Als Teil des Departments Applied Life Sciences nahmen die Studiengänge Bioengineering, Bioinformatik, Biotechnologisches Qualitätsmanagement und Bioverfahrenstechnik ihren Studienbetrieb ab dem Wintersemester 2022/23 am neu errichteten Standort am Alten Landgut auf. Hier verfügen sie über großzügige und neu eingerichtete Übungs- und Forschungslabors samt einer neuen Versuchsbrauerei, dem Scientific Brewhouse. Der Brauprozess fand durch ein gefördertes Projekt der MA23 aus dem Jahr 2013 als qualitätssichernde Maßnahme Einzug in die Curricula der Studiengänge. Höchst erfolgreich, zumal wir wiederholt als Vize- bzw. Staatsmeister*innen bei der Austrian Beer Challenge hervorgegangen sind.",
+        "about.extra": `
+## Mehrere Disziplinen mischen mit
+
+Brauen als Produktionsprozess bietet didaktisch ein hervorragendes Beispiel, um Wissen aus verschiedenen Disziplinen zusammenzuführen. In kleinen Teams entwickeln die Studierenden ein Bierrezept, für das Maischprogramm nutzen sie das Know-how aus der Enzymtechnologie, im Brauprozess viele Aspekte der Verfahrenstechnik und für die Gärung Mikrobiologie, Betriebshygiene und Fermentationstechnik. Zudem wird der Prozess ausführlich dokumentiert und von einer umfangreichen Qualitätskontrolle begleitet.
+
+Qualität macht sich bezahlt! Das zeigen die Erfolge der FH Campus Wien-Studierenden bei der Austrian Beer Challenge Sieg bei der Staatsmeisterschaft im Bierbrauen 2019 und Studierende sind Vizestaatsmeister*innen im Bierbrauen 2018 sowie eine Nominierung beim Clusterland Award für das Kooperationsprojekt "Brau Tech II" der Fachbereiche Bioengineering und Verpackungs- und Ressourcenmanagement mit dem IMC Management Center Innsbruck und ecoplus Lebensmittel Cluster Niederösterreich.
+
+<div class="bg-muted/40 p-4 rounded-lg border-l-4 border-primary text-sm md:text-base mt-6">
+  <p class="italic mb-4">
+    "In unserem Scientific Brewhouse führen wir das Know-how aus verschiedenen Disziplinen zusammen. Unsere Anlage hat das Potenzial, ein innovativer Inkubator für multidisziplinäre Bierideen zu werden."
+  </p>
+<!-- Linie unter dem Zitat -->
+<div class="border-t border-border my-6"></div>
+  <div class="flex items-center gap-4">
+    <img
+      src="/images/Michael_Maurer.jpg"
+      alt="FH-Prof. DI Dr. Michael Maurer"
+      class="w-14 h-14 rounded-full object-cover border border-border"
+    />
+    <div>
+      <p class="text-sm font-semibold text-foreground m-0">
+        FH-Prof. DI Dr. Michael Maurer
+      </p>
+      <p class="text-xs text-muted-foreground leading-tight m-0">
+        Leiter der Studiengänge Bioengineering, Bioinformatik,<br />
+        Biotechnologisches Qualitätsmanagement, Bioverfahrenstechnik
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+## Mit Blick auf das Scientific Brewhouse
+
+Das Konzept des Brauens als Produktionsprozess lässt sich mit einer 150 Liter-Versuchsbrauanlage im neuen Gärungstechnischen Labor konsequent weiterverfolgen. Im Bereich hinter der Cafeteria entstand auf rund 120 m² ein zwei-Geräte Sudhaus mit angeschlossenem Labor für die Prozessentwicklung und Qualitätskontrolle. Die Brauerei wurde von der Firma Mavim errichtet und besteht aus einer Maisch-/Sudpfanne und einem Läuterbottich am Stand der Technik. Komplettiert wird die Anlage durch einen Wärmetauscher, drei zylindrokonische Gärtanks (ZKG-Tanks) – eine besondere Form der Gärtanks die unten spitz zuläuft –, mit einem Fassungsvermögen von je 150 Litern sowie einem weiteren ZKG-Tank, der drei Hektoliter fasst. Durch ein Sichtfenster im Restaurant Das Zehn können Interessierte einen Blick auf die Bierproduktion werfen.
+
+
+
+## Bier Brauen 4.0
+
+Die Anlage wurde mit dem Automatisierungsprogramm BRAUMAT von Siemens am neuesten Stand der Technik realisiert. Sie verfügt über eine umfangreiche Sensorik, was insbesondere bei den Gärtanks wichtig ist, um die Prozesse lückenlos verfolgen zu können. Das Zusammenführen der Daten ermöglicht umfangreiche Analysen, Modelle und Simulationen. Im angeschlossenen Labor für Prozessentwicklung und Qualitätskontrolle können die Studierenden in bewährter Weise die Brauprozesse in vier mal 50 Liter Hobbybrauanlagen und klassischen ZKG-Tanks umsetzen und begleitende Analysen zur Qualitätskontrolle, von den Rohstoffen über In-Prozess-Kontrolle bis zur mikrobiologischen Beurteilung des Produkts durchführen. Das hier gebraute Bier wird in Flaschen und Fässern abgefüllt.
+
+## Inkubator für multidisziplinäre Bierideen ##
+Die Brauanlage ermöglicht eine Vielzahl an praktischen Übungen, wie die Parametrierung von Reglern, Abläufe in der Automatisierung, Audits etc. Diese umfassende Versuchsanlage hat also das Potenzial, ein innovativer Inkubator für multidisziplinäre Bierideen zur werden. Deshalb steht die Anlage weiteren Studiengängen der FH Campus Wien zur Verfügung. 
+`,
         "beer.title": "Unser aktuelles Bier",
         "gallery.title": "Unsere Gallerie",
         "nav.gallery": "Galerie",
@@ -94,13 +143,11 @@ export const translations = {
         "beer.ibu": "Bitterkeit (IBU)",
         "beer.og": "Stammwürze (OG)",
         "beer.fg": "Endvergärung (FG)",
-        "metrics.druck": "Druck",
-        "metrics.fuellstand": "Füllstand",
-        "metrics.restextrakt": "Restextrakt",
+        "blog.dashboardTitle": "Empfolen aus dem Bier Blog",
         "blog.description": "Entdecken Sie unsere Brauprojekte, wissenschaftlichen Erkenntnisse und die Kunst der Bierherstellung",
         "blog.searchPlaceholder": "Suche nach Bierstilen, Zutaten, oder Techniken...",
-        "blog.featured": "Featured Brauprojekte",
-        "blog.allPosts": "Alle Brauprojekte",
+        "blog.featured": "Hervorgehoben",
+        "blog.allPosts": "Alle Blog Einträge",
         "blog.projects": "Brauprojekte",
         "blog.noPosts": "Keine Brauprojekte gefunden",
         "blog.noPostsMessage": "Versuchen Sie andere Suchbegriffe oder Kategorien.",
@@ -166,9 +213,6 @@ export const translations = {
         'metrics.gravity': 'Original Gravity',
         'metrics.extract': 'Residual Extract',
         'metrics.level': 'Level',
-        "metrics.druck": "Pressure",
-        "metrics.fuellstand": "Level",
-        "metrics.restextrakt": "Residual Extract",
         'rating.basedOn': 'Based on',
         'rating.reviews': 'reviews',
         "nav.about": "About the Project",
@@ -179,7 +223,7 @@ export const translations = {
         "nav.historical": "Historical Data",
         "nav.home": "Home",
         "badge.fh": "FH Campus Wien",
-        "hero.title": "Scientific Brewhouse of FH Campus Wien",
+        "hero.title": "Scientific Brewhouse on the University of Applied Sciences Campus Vienna",
         "hero.slide1.title": "Innovative Sensor Technology",
         "hero.slide1.text": "Temperature, CO₂, alcohol, pH value and more – all monitored live.",
         "hero.slide2.title": "Interdisciplinary Learning",
@@ -194,8 +238,52 @@ export const translations = {
         "blog.title": "Beer Blog",
         "blog.readMore": "Read more",
         "blog.readLess": "Show less",
-        "about.title": "About the FH Brewery",
-        "about.text": "In our modern brewery at FH Campus Wien, we combine traditional craftsmanship with innovative research. Students and faculty develop new beer styles and optimize brewing processes using IoT and sensor technologies.",
+        "about.title": "About the Scientific Brewhouse",
+        "about.text": "As part of the Department of Applied Life Sciences, the degree programs in Bioengineering, Bioinformatics, Biotechnological Quality Management, and Bioprocess Technology began their academic operations in the winter semester of 2022/23 at the newly established campus at Alten Landgut. Here, they have access to spacious and newly equipped training and research laboratories, including a new experimental brewery — the Scientific Brewhouse. The brewing process was integrated into the curricula of the degree programs as a quality assurance measure through a publicly funded project by MA23 in 2013. This has been highly successful, as we have repeatedly achieved runner-up and national champion titles at the Austrian Beer Challenge.",
+        "about.extra": `
+## Combining Multiple Disciplines
+
+Brewing as a production process serves as an excellent didactic example of how knowledge from different disciplines can be brought together. In small teams, students develop a beer recipe; for the mashing process, they use their know-how from enzyme technology, in the brewing process various aspects of process engineering, and for fermentation, microbiology, hygiene, and fermentation technology. The process is thoroughly documented and accompanied by comprehensive quality control.
+
+Quality pays off! This is demonstrated by the successes of FH Campus Wien students at the Austrian Beer Challenge — winning the national championship in brewing in 2019, earning second place in 2018, and a nomination for the Clusterland Award for the cooperation project "Brau Tech II" involving the departments of Bioengineering and Packaging & Resource Management, in collaboration with the IMC Management Center Innsbruck and ecoplus Lebensmittel Cluster Lower Austria.
+
+<div class="bg-muted/40 p-4 rounded-lg border-l-4 border-primary text-sm md:text-base mt-6">
+  <p class="italic mb-4">
+    "In our Scientific Brewhouse, we combine know-how from various disciplines. Our facility has the potential to become an innovative incubator for multidisciplinary beer concepts."
+  </p>
+  <!-- Line below the quote -->
+  <div class="border-t border-border my-6"></div>
+  <div class="flex items-center gap-4">
+    <img
+      src="/images/Michael_Maurer.jpg"
+      alt="FH-Prof. DI Dr. Michael Maurer"
+      class="w-14 h-14 rounded-full object-cover border border-border"
+    />
+    <div>
+      <p class="text-sm font-semibold text-foreground m-0">
+        FH-Prof. DI Dr. Michael Maurer
+      </p>
+      <p class="text-xs text-muted-foreground leading-tight m-0">
+        Head of Degree Programs in Bioengineering, Bioinformatics,<br />
+        Biotechnological Quality Management, and Bioprocess Engineering
+      </p>
+    </div>
+  </div>
+</div>
+
+## A Look at the Scientific Brewhouse
+
+The brewing concept as a production process can be consistently pursued using a 150-liter pilot brewing plant in the new fermentation technology laboratory. Behind the cafeteria, around 120 m² of space was created for a two-vessel brewhouse with an adjacent lab for process development and quality control. The brewery was built by the company Mavim and consists of a mash kettle/boiling pan and a lauter tun built to the latest standards. It is completed with a heat exchanger and three cylindroconical fermentation tanks (CCVs) — a special design with a cone-shaped bottom — each with a capacity of 150 liters, plus an additional CCV with a capacity of 300 liters. Visitors can view the brewing process through a viewing window in the “Das Zehn” restaurant.
+
+## Brewing 4.0
+
+The facility uses Siemens’ latest BRAUMAT automation software. It is equipped with extensive sensors, especially in the fermenters, to allow uninterrupted tracking of the brewing process. The collected data supports comprehensive analysis, modeling, and simulation. In the adjoining lab, students can conduct practical brewing sessions using four 50-liter hobby brewing setups and standard CCVs, including quality control analyses, in-process checks, and microbiological evaluations. The beer produced here is bottled or kegged.
+
+## Incubator for Multidisciplinary Beer Ideas
+
+The brewing facility enables a wide range of hands-on learning opportunities — from controller parameterization to automation workflows and audits. This extensive experimental facility thus has the potential to become an innovative incubator for multidisciplinary beer ideas. Therefore, it is also available to other study programs at FH Campus Wien.
+`
+,
         "beer.title": "Our Current Beer",
         "gallery.title": "Our Gallery",
         "nav.gallery": "Gallery",
@@ -207,8 +295,9 @@ export const translations = {
         "blog.description": "Discover our brewing projects, scientific insights, and the art of beer making",
         "blog.back": "Back to Blog",
         "blog.searchPlaceholder": "Search for beer styles, ingredients, or techniques...",
-        "blog.featured": "Featured Brewing Projects",
-        "blog.allPosts": "All Brewing Projects",
+        "blog.dashboardTitle": "Recommended from the Beer Blog",
+        "blog.featured": "Featured",
+        "blog.allPosts": "All Blog Posts",
         "blog.projects": "Brewing Projects",
         "blog.noPosts": "No Brewing Projects Found",
         "blog.noPostsMessage": "Try different search terms or categories.",
