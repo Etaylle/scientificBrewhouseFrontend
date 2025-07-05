@@ -30,7 +30,7 @@ import {MotionEffect} from "@/components/animate-ui/effects/motion-effect";
 import {LanguageToggle} from "@/components/ui/language-toggle";
 import {Link} from "wouter";
 import { useEffect } from "react";
-
+import { InstagramCard } from "@/components/instagramCard";
 export default function Dashboard() {
     const {language, setLanguage, t} = useLanguage();
     const {theme, toggleTheme} = useTheme();
@@ -178,7 +178,9 @@ export default function Dashboard() {
                             <div id="currentBeer" className="space-y-6">
                                 <BeerInfo/>
                                 <BeerRating/>
+                                <InstagramCard />
                             </div>
+                            
                         </div>
                     </section>
                     <GallerySection/>
