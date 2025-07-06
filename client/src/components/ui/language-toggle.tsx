@@ -21,7 +21,7 @@ export function LanguageToggle({ language, setLanguage }) {
             </Button>
             <Button
                 variant="ghost"
-                size="default"
+                size="icon"
                 onClick={() => setLanguage("en")}
                 className={`flex-1 z-10 text-sm px-0 ${language === "en" ? 'text-white' : 'text-foreground'}`}
             >
