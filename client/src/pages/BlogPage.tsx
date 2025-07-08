@@ -8,20 +8,38 @@ import { Beer, Award, Search, Filter } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { blogPosts } from "@/components/blogPosts/blogPosts";
 import { ScrollToAnchor } from "@/components/ScrollToAnchor";
-const categories = ["Alle", "Brauprojekt", "Universitätsforschung", "Lager", "IPA", "Saison", "Weissbier"];
+
+
 export default function BlogPage() {
   const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("Alle");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(blogPosts);
-
+  const categories = [
+    t("blog.categories.all") || "Alle",
+    t("blog.categories.research") || "Forschung & Entwicklung", 
+    t("blog.categories.beerTypes") || "Biersorten",
+    t("blog.categories.events") || "Veranstaltungen",
+    t("blog.categories.news") || "Neuigkeiten"
+  ];
   useEffect(() => {
     let filtered = blogPosts;
-
-    if (selectedCategory !== "Alle") {
-      filtered = filtered.filter((post) => post.category === selectedCategory);
+  
+    if (selectedCategory !== (t("blog.categories.all") || "Alle")) {
+      filtered = filtered.filter((post) => {
+        // Map translated category back to original category key
+        const categoryMap = {
+          [t("blog.categories.research") || "Forschung & Entwicklung"]: "Forschung & Entwicklung",
+          [t("blog.categories.beerTypes") || "Biersorten"]: "Biersorten", 
+          [t("blog.categories.events") || "Veranstaltungen"]: "Veranstaltungen",
+          [t("blog.categories.news") || "Neuigkeiten"]: "Neuigkeiten"
+        };
+        
+        const originalCategory = categoryMap[selectedCategory] || selectedCategory;
+        return post.category === originalCategory;
+      });
     }
-
+  
     if (searchTerm) {
       filtered = filtered.filter(
         (post) =>
@@ -30,10 +48,9 @@ export default function BlogPage() {
           (post.tags || []).some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
-
+  
     setFilteredPosts(filtered);
-  }, [selectedCategory, searchTerm, language]);
-
+  }, [selectedCategory, searchTerm, language, t]);
   const getDynamicGridClass = (itemCount: number) => {
     if (itemCount === 1) return "grid-cols-1 justify-items-center";
     if (itemCount === 2) return "grid-cols-1 md:grid-cols-2 justify-items-center";
@@ -70,14 +87,14 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Search and Filter Controls - Full Width */}
+        {/* Search and Filter Controls*/}
         <div className="w-full bg-white dark:bg-gray-800 shadow-xl border-t border-b border-amber-200 dark:border-amber-800 py-8">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="flex flex-col lg:flex-row gap-6 items-center">
               <div className="relative flex-1 max-w-lg">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <Input
-                  placeholder={t("blog.searchPlaceholder") || "Search brewing projects..."}
+                  placeholder={t("blog.searchPlaceholder") || "Type to search..."}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-12 h-12 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500"

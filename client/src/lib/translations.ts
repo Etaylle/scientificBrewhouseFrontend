@@ -132,6 +132,11 @@ Die Brauanlage ermöglicht eine Vielzahl an praktischen Übungen, wie die Parame
         "blog.postNotFound": "Blogpost nicht gefunden",
         "blog.postNotFoundMessage": "Der angeforderte Blogpost existiert nicht.",
         "blog.back": "Zurück zum Blog",
+        "blog.categories.all": "Alle",
+        "blog.categories.research": "Forschung & Entwicklung",
+        "blog.categories.beerTypes": "Biersorten",
+        "blog.categories.events": "Veranstaltungen",
+        "blog.categories.news": "Neuigkeiten",
         "blog.brewingData": "Braudaten",
         "blog.originalGravity": "Stammwürze",
         "blog.finalGravity": "Endvergärung",
@@ -145,7 +150,7 @@ Die Brauanlage ermöglicht eine Vielzahl an praktischen Übungen, wie die Parame
         "beer.fg": "Endvergärung (FG)",
         "blog.dashboardTitle": "Empfohlen aus dem Bier Blog",
         "blog.description": "Entdecken Sie unsere Brauprojekte, wissenschaftlichen Erkenntnisse und die Kunst der Bierherstellung",
-        "blog.searchPlaceholder": "Suche nach Bierstilen, Zutaten, oder Techniken...",
+        "blog.searchPlaceholder": "Gebe Text für die Suche ein...",
         "blog.featured": "Hervorgehoben",
         "blog.allPosts": "Alle Blog Einträge",
         "blog.projects": "Brauprojekte",
@@ -294,7 +299,7 @@ The brewing facility enables a wide range of hands-on learning opportunities —
         'metrics.stammwuerze': 'Original Gravity',
         "blog.description": "Discover our brewing projects, scientific insights, and the art of beer making",
         "blog.back": "Back to Blog",
-        "blog.searchPlaceholder": "Search for beer styles, ingredients, or techniques...",
+        "blog.searchPlaceholder": "Type to search...",
         "blog.dashboardTitle": "Recommended from the Beer Blog",
         "blog.featured": "Featured",
         "blog.allPosts": "All Blog Posts",
@@ -335,7 +340,11 @@ The brewing facility enables a wide range of hands-on learning opportunities —
         "location.hours.monday": "Monday: Closed",
         "location.hours.tuesday": "Tuesday: 8:30am – 8:30pm",
         "location.mapTitle": "Location Map",
-
+'blog.categories.all': 'All',
+'blog.categories.research': 'Research & Development',
+'blog.categories.beerTypes': 'Beer Types',
+'blog.categories.events': 'Events',
+'blog.categories.news': 'News',
     }
 };
 
