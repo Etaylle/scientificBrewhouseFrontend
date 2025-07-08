@@ -114,7 +114,7 @@ Dreher, der in jungen Jahren Studienreisen unternahm, lernte in Bayern die Vorte
     `,
     de: `
     
-<p className="text-sm text-gray-500 italic mt-2 pl-6">
+<p className="text-center text-gray-500 italic mt-2 pl-6">
   Anton Dreher Brauerei
 </p>
 

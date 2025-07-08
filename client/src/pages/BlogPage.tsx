@@ -51,6 +51,7 @@ export default function BlogPage() {
   
     setFilteredPosts(filtered);
   }, [selectedCategory, searchTerm, language, t]);
+  
   const getDynamicGridClass = (itemCount: number) => {
     if (itemCount === 1) return "grid-cols-1 justify-items-center";
     if (itemCount === 2) return "grid-cols-1 md:grid-cols-2 justify-items-center";

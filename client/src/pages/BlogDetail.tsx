@@ -55,23 +55,21 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
     </div>
 
     {post.images && post.images.length > 0 && (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {post.images.map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Image ${index}`}
-            className="rounded-xl shadow-md"
-            onError={(e) => (e.currentTarget.src = "/images/fallback.jpg")}
-          />
-        ))}
-      </div>
-    )}
+  <div className="w-full">
+    <img
+      src={post.images[0]}  
+      alt={post.title[language] || "Blog Post Image"}
+      className="w-full h-auto rounded-xl shadow-md object-cover"
+      style={{ maxHeight: '500px' }}  
+      onError={(e) => (e.currentTarget.src = "/images/fallback.jpg")}
+    />
+  </div>
+)}
 
 <div className="prose dark:prose-invert max-w-none">
   <ReactMarkdown
     remarkPlugins={[remarkGfm]}
-    rehypePlugins={[rehypeRaw]} // ➕ Damit HTML-Tags im Markdown funktionieren
+    rehypePlugins={[rehypeRaw]} 
   >
     {post.content[language]}
   </ReactMarkdown>
