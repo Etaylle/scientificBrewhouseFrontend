@@ -61,7 +61,7 @@ function getMetricsMap(t) {
     ],
     maischen: [
       { key: "temperatur", label: t("metrics.temperature"), color: "#10B981", unit: "°C", icon: <Thermometer className="w-4 h-4" /> },
-      { key: "fuellstand", label: t("metrics.fuellstand"), color: "#F59E0B", unit: "%", icon: <Gauge className="w-4 h-4" /> },
+      { key: "fuellstand", label: t("metrics.level"), color: "#F59E0B", unit: "%", icon: <Gauge className="w-4 h-4" /> },
       { key: "stammwuerze", label: t("metrics.stammwuerze"), color: "#8B5CF6", unit: "°P", icon: <Droplets className="w-4 h-4" /> },
     ],
   };
