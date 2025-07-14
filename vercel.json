@@ -1,14 +1,17 @@
 {
   "rewrites": [
     {
-      "source": "/api/*",
-      "destination": "https://959d3bb0f1a5.ngrok-free.app/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://959d3bb0f1a5.ngrok-free.app/api/:path*"
     },
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ],
   "headers": [
     {
-      "source": "/api/*",
+      "source": "/api/:path*",
       "headers": [
         {
           "key": "ngrok-skip-browser-warning",
