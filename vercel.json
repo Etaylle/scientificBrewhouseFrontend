@@ -8,15 +8,11 @@
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/*",
       "headers": [
         {
           "key": "ngrok-skip-browser-warning",
-          "value": "any"
-        },
-        {
-          "key": "User-Agent",
-          "value": "Vercel-Bot"
+          "value": "true"
         }
       ]
     }
