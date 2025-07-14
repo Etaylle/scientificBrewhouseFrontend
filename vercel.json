@@ -12,7 +12,11 @@
       "headers": [
         {
           "key": "ngrok-skip-browser-warning",
-          "value": "true"
+          "value": "any"
+        },
+        {
+          "key": "User-Agent",
+          "value": "Vercel-Bot"
         }
       ]
     }
