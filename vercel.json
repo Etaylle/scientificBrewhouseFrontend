@@ -5,5 +5,16 @@
       "destination": "https://edc8c9e76223.ngrok-free.app/api/$1"
     },
     { "source": "/(.*)", "destination": "/" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "ngrok-skip-browser-warning",
+          "value": "true"
+        }
+      ]
+    }
   ]
 }
