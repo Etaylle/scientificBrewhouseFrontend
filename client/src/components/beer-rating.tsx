@@ -12,7 +12,7 @@ interface BeerRatingData {
   anzahl: number;
   durchschnitt: string;
 }
-const API_BASE_URL = "http://10.123.26.22/api";
+const API_BASE_URL = "/api";
 export function BeerRating() {
   const { t } = useLanguage();
   const { toast } = useToast();

@@ -21,7 +21,7 @@ export function BeerInfo() {
   const { data: beer, isLoading, isError } = useQuery<Beer>({
     queryKey: ["active-beer"],
     queryFn: async () => {
-      const res = await fetch("http://10.123.26.22/api/beer/active");
+      const res = await fetch("/api/beer/active");
       if (!res.ok) throw new Error("Fehler beim Laden des Bieres");
       return res.json();
     },
