@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/components/language-provider";
 import { useToast } from "@/hooks/use-toast";
 import { queryClient, apiRequest } from "@/lib/queryClient";
@@ -38,6 +39,16 @@ export function BeerRating() {
     },
     enabled: !!activeBeer,
   });
+
+  // Platzhalter-Bewertungsdaten
+  const placeholderRating: BeerRatingData = {
+    biername: "Beispiel Bier",
+    anzahl: 42,
+    durchschnitt: "4.2"
+  };
+
+  const displayRating = ratingData || placeholderRating;
+  const isPlaceholder = !ratingData;
 
 
 
@@ -129,23 +140,29 @@ export function BeerRating() {
   }
 
   return (
-      <Card className="bg-card dark:bg-card border-border dark:border-border">
+      <Card className={`bg-card dark:bg-card border-border dark:border-border ${isPlaceholder ? "opacity-75" : ""}`}>
         <CardHeader>
-          <CardTitle className="text-lg font-semibold text-foreground dark:text-foreground">
-            {t("rating.title")}
+          <CardTitle className="text-lg font-semibold text-foreground dark:text-foreground flex items-center justify-between">
+            <span>{t("rating.title")}</span>
+            {isPlaceholder && (
+              <Badge variant="outline" className="text-xs">
+                Beispieldaten
+              </Badge>
+            )}
           </CardTitle>
         </CardHeader>
       <CardContent>
         {/* Overall Rating Display */}
         <div className="mb-6 text-center">
           <div className="text-3xl font-bold text-[hsl(var(--chart-1))] mb-2">
-            {ratingData?.durchschnitt || "0.0"}
+            {displayRating.durchschnitt}
           </div>
 
           <div className="flex justify-center mb-2">
-            {renderStars(Math.round(Number(ratingData?.durchschnitt) || 0))}          </div>
+            {renderStars(Math.round(Number(displayRating.durchschnitt)))}
+          </div>
           <p className="text-sm text-muted-foreground">
-            {t("rating.basedOn")} {ratingData?.anzahl || 0} {t("rating.reviews")}
+            {t("rating.basedOn")} {displayRating.anzahl} {t("rating.reviews")}
           </p>
         </div>
 

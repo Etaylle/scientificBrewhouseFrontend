@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/components/language-provider";
+import wienerLagerImg from "@/components/img/Wiener-Lager.jpg";
+import { Loader2 } from "lucide-react";
 
 export function BeerInfo() {
   const { t } = useLanguage();
@@ -51,23 +53,40 @@ export function BeerInfo() {
     );
   }
 
-  if (!beer) {
-    return (
-        <Card>
-          <CardContent className="py-6">
-            <p className="text-center text-muted-foreground">
-              {t("beer.noActiveBeer")}
-            </p>
-          </CardContent>
-        </Card>
-    );
-  }
+  // Platzhalter-Bier wenn keine Daten verfügbar sind
+  const placeholderBeer: Beer = {
+    name: "Beispiel Craft Beer",
+    type: "India Pale Ale (IPA)",
+    abv: 6.5,
+    ibu: 45,
+    og: 1.065,
+    fg: 1.012,
+    description: "Ein ausgewogenes Craft Beer mit fruchtigen Hopfennoten und malziger Süße. Perfekt für jeden Bierliebhaber.",
+    ingredients: ["Wasser", "Gerstenmalz", "Hopfen", "Hefe"],
+    imageUrl: wienerLagerImg
+  };
+
+  const displayBeer = beer || placeholderBeer;
+  const isPlaceholder = !beer;
 
   return (
-      <Card>
+      <Card className={isPlaceholder ? "opacity-75" : ""}>
         <CardHeader>
           <CardTitle className="text-xl font-semibold text-foreground">
-            {t("beer.currentBeer")}
+            <div className="flex items-center justify-between">
+              <span>{t("beer.currentBeer")}</span>
+              <div className="flex items-center gap-2">
+                {isPlaceholder && (
+                  <Badge variant="outline" className="text-xs">
+                    Beispieldaten
+                  </Badge>
+                )}
+                <Badge className="bg-green-500 text-white flex items-center gap-1">
+                  <Loader2 className="w-3 h-3 animate-spin" />
+                  Aktuell in Produktion
+                </Badge>
+              </div>
+            </div>
           </CardTitle>
         </CardHeader>
 
@@ -77,36 +96,36 @@ export function BeerInfo() {
             <div className="flex-[2] space-y-4">
               <div className="space-y-1">
                 <h3 className="text-lg font-semibold text-[hsl(var(--chart-1))]">
-                  {beer.name}
+                  {displayBeer.name}
                 </h3>
-                <p className="text-sm text-muted-foreground">{beer.type}</p>
+                <p className="text-sm text-muted-foreground">{displayBeer.type}</p>
               </div>
 
               <div className="grid grid-cols-1 gap-4 text-sm">
                 <div className="flex justify-between">
                   <span className="font-medium">{t("beer.abv")}</span>
-                  <span>{beer.abv}%</span>
+                  <span>{displayBeer.abv}%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">{t("beer.ibu")}</span>
-                  <span>{beer.ibu}</span>
+                  <span>{displayBeer.ibu}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">{t("beer.og")}</span>
-                  <span>{beer.og}</span>
+                  <span>{displayBeer.og}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">{t("beer.fg")}</span>
-                  <span>{beer.fg}</span>
+                  <span>{displayBeer.fg}</span>
                 </div>
               </div>
             </div>
 
-            {beer.imageUrl ? (
+            {displayBeer.imageUrl ? (
                 <div className="flex-[1] flex">
                   <img
-                      src={beer.imageUrl}
-                      alt={beer.name}
+                      src={displayBeer.imageUrl}
+                      alt={displayBeer.name}
                       className="w-full h-full object-cover"
                   />
                 </div>
@@ -119,13 +138,13 @@ export function BeerInfo() {
 
           <div>
             <h4 className="font-medium mb-2 text-foreground">{t("beer.description")}</h4>
-            <p className="text-sm text-muted-foreground">{beer.description}</p>
+            <p className="text-sm text-muted-foreground">{displayBeer.description}</p>
           </div>
 
           <div>
             <h4 className="font-medium mb-2 text-foreground">{t("beer.ingredients")}</h4>
             <div className="flex flex-wrap gap-2">
-              {beer.ingredients.map((ingredient, index) => (
+              {displayBeer.ingredients.map((ingredient, index) => (
                   <Badge key={index} variant="secondary" className="bg-muted text-foreground">
                     {ingredient}
                   </Badge>

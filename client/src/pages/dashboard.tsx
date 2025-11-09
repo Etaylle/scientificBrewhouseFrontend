@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {SensorChart} from "@/components/sensor-chart";
-import {BeerInfo} from "@/components/beer-info";
+import {ProductionBeer} from "@/components/production-beer";
 import {BeerRating} from "@/components/beer-rating";
 import {useLanguage} from "@/components/language-provider";
 import {useTheme} from "@/components/theme-provider";
@@ -60,9 +60,9 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-background transition-colors duration-300">
+        <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 transition-colors duration-300">
             <header
-                className="bg-background dark:bg-background relative z-50 shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_4px_rgba(255,255,255,0.1)] transition-colors duration-300"
+                className="bg-background/80 dark:bg-background/80 backdrop-blur-xl relative z-50 shadow-lg border-b border-border/50 transition-all duration-300 sticky top-0"
             >
                 <div className="container mx-auto py-4">
                     <div className="flex items-center justify-between">
@@ -159,72 +159,87 @@ export default function Dashboard() {
             <main>
                 <HeroSection/>
                 <AboutSection/>
-                <div className="container mx-auto px-4 py-8 space-y-8">
+                <div className="container mx-auto px-4 py-12 space-y-12">
+                    {/* Dashboard Section - Charts + Production Beer */}
                     <section id="dashboard">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            <div className="lg:col-span-2 space-y-6">
-                                <SensorChart
-                                    sensorType="fermentation"
-                                    title={t("charts.fermentation")}
-                                    icon={<Activity className="w-5 h-5 text-green-500"/>}
-                                />
+                            {/* Linke Spalte: Sensor Charts */}
+                            <div className="lg:col-span-2 space-y-8">
                                 <SensorChart
                                     sensorType={["maischen"]}
                                     title={t("charts.mashing") + " + " + t("charts.hopBoiling")}
                                     icon={<Activity className="w-5 h-5 text-indigo-500"/>}
                                 />
-
-                            </div>
-                            {/* Beer Information Panel */}
-                            <div id="currentBeer" className="space-y-6">
-                                <BeerInfo/>
-                                <BeerRating/>
-                                <InstagramCard />
+                                <SensorChart
+                                    sensorType="fermentation"
+                                    title={t("charts.fermentation")}
+                                    icon={<Activity className="w-5 h-5 text-green-500"/>}
+                                />
                             </div>
                             
+                            {/* Rechte Spalte: Aktuelles Bier + Blog */}
+                            <div className="space-y-8 flex flex-col">
+                                {/* Aktuell in Produktion */}
+                                <div id="production-beer" className="flex-shrink-0">
+                                    <ProductionBeer/>
+                                </div>
+                                
+                                {/* Blog Section - Fertige Biere */}
+                                <div id="blog" className="flex-1 flex flex-col min-h-0">
+                                    <h2 className="text-2xl font-bold mb-6 text-foreground bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent flex-shrink-0">
+                                        {t("blog.dashboardTitle") ?? "Empfohlen aus dem Blog"}
+                                    </h2>
+                                    {blogPosts.find((p) => p.featured) && (
+                                        <Card className="bg-card dark:bg-card border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group flex-1 flex flex-col">
+                                            <div className="relative flex-1 min-h-[300px]">
+                                                <img
+                                                    src={blogPosts.find((p) => p.featured)!.images[0]}
+                                                    alt={blogPosts.find((p) => p.featured)!.title[language]}
+                                                    className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                                                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                                                    <Badge className="mb-3 w-fit text-xs bg-amber-500/90 hover:bg-amber-600 border-0">
+                                                        {blogPosts.find((p) => p.featured)!.category}
+                                                    </Badge>
+                                                    <h3 className="text-2xl font-bold text-white mb-3 line-clamp-2">
+                                                        {blogPosts.find((p) => p.featured)!.title[language]}
+                                                    </h3>
+                                                    <p className="text-white/90 text-sm mb-4 line-clamp-3">
+                                                        {blogPosts.find((p) => p.featured)!.excerpt[language]}
+                                                    </p>
+                                                    <div>
+                                                        <Button asChild size="sm" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white border-0 shadow-lg">
+                                                            <Link 
+                                                                to={`/blog/${blogPosts.find((p) => p.featured)!.slug}`}
+                                                                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                                                                {t("blog.read") || "Zum Brauprojekt"}
+                                                            </Link>
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Card>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </section>
-                    <GallerySection/>
-                    <section id="blog" className="container mx-auto">
-                        <h2 className="text-2xl font-bold mb-6 text-foreground">
-                            {t("blog.dashboardTitle") ?? "Bier Blog"}
-                        </h2>
-
-                        {blogPosts.find((p) => p.featured) && (
-                            <Card
-                                className="bg-card dark:bg-card border border-border dark:border-border shadow-lg overflow-hidden">
-                                <div className="relative h-60 md:h-80">
-                                    <img
-                                        src={blogPosts.find((p) => p.featured)!.images[0]}
-                                        alt={blogPosts.find((p) => p.featured)!.title[language]}
-                                        className="absolute inset-0 w-full h-full object-cover opacity-60"
-                                    />
-                                    <div
-                                        className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent p-6 flex flex-col justify-end">
-                                        <Badge className="mb-2 w-fit">
-                                            {blogPosts.find((p) => p.featured)!.category}
-                                        </Badge>
-                                        <h3 className="text-2xl font-bold text-white mb-2">
-                                            {blogPosts.find((p) => p.featured)!.title[language]}
-                                        </h3>
-                                        <p className="text-white text-sm mb-4 line-clamp-3">
-                                            {blogPosts.find((p) => p.featured)!.excerpt[language]}
-                                        </p>
-                                        <div>
-                                            <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white">
-                                                <Link 
-                                                    to={`/blog/${blogPosts.find((p) => p.featured)!.slug}`}
-                                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                                                    {t("blog.read") || "Zum Brauprojekt"}
-                                                </Link>
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Card>
-                        )}
-
+                    
+                    {/* Galerie + Instagram Section - Symmetrisch nebeneinander */}
+                    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Galerie - 2/3 Breite */}
+                        <div className="lg:col-span-2 flex flex-col">
+                            <GallerySection/>
+                        </div>
+                        
+                        {/* Instagram - 1/3 Breite, symmetrisch zur Galerie */}
+                        <div className="lg:col-span-1 flex flex-col">
+                            <h2 className="text-2xl font-bold mb-6 text-foreground">Instagram</h2>
+                            <InstagramCard />
+                        </div>
                     </section>
+                    
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="lg:col-span-1 space-y-6">
                             <Card

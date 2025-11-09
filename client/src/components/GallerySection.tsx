@@ -24,31 +24,33 @@ export function GallerySection() {
     };
 
     return (
-        <section id="gallery" className="container mx-auto py-8">
-            <h2 className="text-2xl font-bold mb-6 text-foreground">
+        <section id="gallery" className="flex flex-col h-full">
+            <h2 className="text-2xl font-bold mb-6 text-foreground bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                 {t("gallery.title")}
             </h2>
 
-            <ScrollArea className="whitespace-nowrap rounded-md border">
-                <div ref={scrollRef} className="flex w-max space-x-4 p-4">
-                    {images.map((src, index) => (
-                        <Card
-                            key={index}
-                            className="min-w-[300px] max-w-[300px] shrink-0 hover:scale-105 transition-transform cursor-pointer"
-                            onClick={() => setLightboxImage(src)}
-                        >
-                            <CardContent className="p-0">
-                                <img
-                                    src={src}
-                                    alt={`FH Bild ${index + 1}`}
-                                    className="w-full h-48 object-cover rounded-md"
-                                />
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-                <ScrollBar orientation="horizontal" />
-            </ScrollArea>
+            <Card className="flex-1 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 min-h-0">
+                <CardContent className="p-6 h-full">
+                    <div className="h-full overflow-auto rounded-lg">
+                        <div ref={scrollRef} className="grid grid-cols-2 gap-4">
+                            {images.map((src, index) => (
+                                <div
+                                    key={index}
+                                    className="relative group cursor-pointer overflow-hidden rounded-lg aspect-video"
+                                    onClick={() => setLightboxImage(src)}
+                                >
+                                    <img
+                                        src={src}
+                                        alt={`FH Bild ${index + 1}`}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
 
             {lightboxImage && (
                 <div
@@ -57,14 +59,14 @@ export function GallerySection() {
                 >
                     <button
                         onClick={() => setLightboxImage(null)}
-                        className="absolute top-4 right-4 text-white text-3xl"
+                        className="absolute top-4 right-4 text-white text-3xl hover:scale-110 transition-transform"
                     >
                         <X />
                     </button>
                     <img
                         src={lightboxImage}
                         alt="Lightbox"
-                        className="max-w-full max-h-[90vh] rounded-xl shadow-lg"
+                        className="max-w-full max-h-[90vh] rounded-xl shadow-2xl"
                     />
                 </div>
             )}

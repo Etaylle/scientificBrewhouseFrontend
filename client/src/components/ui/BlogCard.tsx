@@ -15,7 +15,8 @@ import {
   User, 
   Calendar, 
   Tag,
-  ExternalLink 
+  ExternalLink,
+  Star
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -51,8 +52,8 @@ const getCategoryIcon = (category: string) => {
 
   return (
     <>
-      <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer bg-white dark:bg-gray-800 border-amber-200 dark:border-amber-800 rounded-2xl overflow-hidden hover:-translate-y-1">
-        <div className="relative h-48 overflow-hidden" onClick={toggleDialog}>
+      <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer bg-white dark:bg-gray-800 border-amber-200 dark:border-amber-800 rounded-2xl overflow-hidden hover:-translate-y-1 h-full flex flex-col">
+        <div className="relative h-56 overflow-hidden flex-shrink-0" onClick={toggleDialog}>
         <img
   src={post.images?.[0] || "/images/fallback"}
   alt={post.title[language]}
@@ -76,7 +77,7 @@ const getCategoryIcon = (category: string) => {
           </div>
         </div>
         
-        <CardHeader className="pb-3">
+        <CardHeader className="pb-3 flex-shrink-0">
           <div className="flex items-center justify-between mb-3">
             <Badge
               variant="outline"
@@ -89,15 +90,39 @@ const getCategoryIcon = (category: string) => {
               {post.readTime}
             </div>
           </div>
-          <CardTitle className="text-lg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors line-clamp-2">
+          <CardTitle className="text-lg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors line-clamp-2 min-h-[3.5rem]">
             {post.title[language]}
           </CardTitle>
         </CardHeader>
         
-        <CardContent>
-          <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+        <CardContent className="flex-grow flex flex-col">
+          <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 flex-grow min-h-[4.5rem]">
             {post.excerpt[language]}
           </p>
+          
+          {/* Rating for Finished Beers */}
+          {post.category === "Fertige Biere" && post.ratings && (
+            <div className="flex items-center gap-2 mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <div className="flex items-center">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    className={`w-4 h-4 ${
+                      star <= Math.round(post.ratings!.overall)
+                        ? "fill-amber-500 text-amber-500"
+                        : "text-gray-300 dark:text-gray-600"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-lg font-bold text-amber-600 dark:text-amber-400">
+                {post.ratings.overall.toFixed(1)}
+              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                ({post.ratings.count} {t("blog.rating.reviews")})
+              </span>
+            </div>
+          )}
           
           <div className="flex items-center justify-between mb-4">
             <div className="text-sm text-gray-500">

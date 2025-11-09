@@ -19,6 +19,19 @@ export type BlogPost = {
     srm: number;
     efficiency: number;
   };
+  // Professional rating system for finished beers (BeerTasting.com style)
+  ratings?: {
+    overall: number;        // Overall rating (0-5)
+    count: number;          // Number of ratings
+    categories: {
+      appearance: number;   // Aussehen: Color, clarity, foam (0-5)
+      aroma: number;        // Geruch: Hops, malt, fruit notes (0-5)
+      taste: number;        // Geschmack: Flavor profile (0-5)
+      mouthfeel: number;    // Mundgefühl: Body, carbonation (0-5)
+      overall: number;      // Gesamteindruck (0-5)
+    };
+    distribution: { 1: number; 2: number; 3: number; 4: number; 5: number };
+  };
 };
 
 
@@ -199,9 +212,9 @@ Anton Dreher auf Wien Geschichte Wiki.`
   author: "Franz D. Hofer",
   date: "2020-06-29",
   readTime: "10 min",
-  category: "Biersorten",
+  category: "Geschichte",
   tags: ["Wiener Lager", "Geschichte", "Anton Dreher", "Schwechat"],
-  featured: true,
+  featured: false,
   images: ["/images/revolution-in-klein-schwechat.jpg"], 
    brewingData: {
       originalGravity: 1.048,
@@ -211,6 +224,223 @@ Anton Dreher auf Wien Geschichte Wiki.`
       srm: 10,
       efficiency: 75,
     },
-}
+},
+
+// ========== FERTIGE BIERE (FINISHED BEERS) ==========
+{
+  id: "3",
+  slug: "wiener-lager-2025",
+  title: {
+    en: "Wiener Lager 2025",
+    de: "Wiener Lager 2025",
+  },
+  excerpt: {
+    en: "Our award-winning interpretation of the classic Viennese lager. Smooth, malty, with a beautiful amber color and a balanced finish.",
+    de: "Unsere preisgekrönte Interpretation des klassischen Wiener Lagers. Weich, malzig, mit einer schönen Bernsteinfarbe und ausgewogenem Abgang.",
+  },
+  content: {
+    en: `
+# Wiener Lager 2025
+
+## Our Brewing Story
+
+This Wiener Lager was brewed by students of the Bioengineering program in January 2025 as part of their fermentation technology course. Following traditional recipes from the 19th century, we used modern brewing techniques and precise process control to create an authentic Viennese beer.
+
+## Brewing Process
+
+- **Mashing:** Step mashing with protein rest at 52°C and saccharification at 65°C
+- **Boiling:** 90 minutes with noble Saaz hops
+- **Fermentation:** Cold fermentation at 10°C for 14 days
+- **Lagering:** 6 weeks at 2°C for perfect maturation
+
+## Tasting Notes
+
+**Appearance:** Clear amber with a creamy, off-white head
+
+**Aroma:** Toasted bread, caramel, subtle hop spice
+
+**Taste:** Smooth and balanced with notes of Vienna malt, light caramel sweetness, and a clean, dry finish
+
+**Mouthfeel:** Medium-bodied with moderate carbonation
+
+## Awards
+
+- 🏆 Austrian Beer Challenge 2025 - Gold Medal
+- 🥈 Vienna Beer Festival 2025 - Best Traditional Style
+
+## Perfect Pairing
+
+Pairs wonderfully with Wiener Schnitzel, roasted pork, or aged cheeses. Serve at 8-10°C.
+    `,
+    de: `
+# Wiener Lager 2025
+
+## Unsere Braugeschichte
+
+Dieses Wiener Lager wurde von Studierenden des Studiengangs Bioengineering im Januar 2025 im Rahmen ihrer Gärungstechnologie-Vorlesung gebraut. Nach traditionellen Rezepten des 19. Jahrhunderts haben wir moderne Brautechniken und präzise Prozesssteuerung verwendet, um ein authentisches Wiener Bier zu schaffen.
+
+## Brauprozess
+
+- **Maischen:** Stufenmaische mit Eiweißrast bei 52°C und Verzuckerung bei 65°C
+- **Kochen:** 90 Minuten mit edlem Saaz-Hopfen
+- **Gärung:** Kalte Gärung bei 10°C für 14 Tage
+- **Lagerung:** 6 Wochen bei 2°C für perfekte Reifung
+
+## Verkostungsnotizen
+
+**Aussehen:** Klares Bernstein mit cremiger, cremeweißer Schaumkrone
+
+**Geruch:** Geröstetes Brot, Karamell, subtile Hopfenwürze
+
+**Geschmack:** Weich und ausgewogen mit Noten von Wiener Malz, leichter Karamellsüße und einem sauberen, trockenen Abgang
+
+**Mundgefühl:** Mittelkräftig mit moderater Kohlensäure
+
+## Auszeichnungen
+
+- 🏆 Austrian Beer Challenge 2025 - Goldmedaille
+- 🥈 Vienna Beer Festival 2025 - Bester Traditioneller Stil
+
+## Perfektes Pairing
+
+Passt hervorragend zu Wiener Schnitzel, Schweinebraten oder gereiftem Käse. Servieren bei 8-10°C.
+    `,
+  },
+  author: "Bioengineering Students WS 2024/25",
+  date: "2025-01-15",
+  readTime: "4 min",
+  category: "Fertige Biere",
+  tags: ["Wiener Lager", "Lagerbier", "Traditionell", "Preisgekrönt"],
+  featured: true,  // HERVORGEHOBEN!
+  images: [
+    "/images/wienerLager.png",  // Geändertes Bild
+  ],
+  brewingData: {
+    originalGravity: 1.052,
+    finalGravity: 1.012,
+    abv: 5.2,
+    ibu: 24,
+    srm: 12,
+    efficiency: 78,
+  },
+  ratings: {
+    overall: 4.7,
+    count: 23,
+    categories: {
+      appearance: 4.8,  // Beautiful amber color, perfect foam
+      aroma: 4.6,       // Rich malt, subtle hop spice
+      taste: 4.7,       // Balanced, authentic Vienna malt character
+      mouthfeel: 4.6,   // Medium body, smooth carbonation
+      overall: 4.8,     // Excellent traditional example
+    },
+    distribution: { 1: 0, 2: 1, 3: 2, 4: 6, 5: 14 },
+  },
+},
+
+{
+  id: "4",
+  slug: "campus-pale-ale",
+  title: {
+    en: "Campus Pale Ale",
+    de: "Campus Pale Ale",
+  },
+  excerpt: {
+    en: "A modern American-style Pale Ale with tropical fruit notes and a crisp, refreshing finish. Perfect for warm summer days.",
+    de: "Ein modernes amerikanisches Pale Ale mit tropischen Fruchtnoten und einem knackigen, erfrischenden Abgang. Perfekt für warme Sommertage.",
+  },
+  content: {
+    en: `
+# Campus Pale Ale
+
+## Innovation Meets Tradition
+
+Brewed in May 2024 by our Data Science students as part of an interdisciplinary project combining brewing science with data analytics. This beer showcases modern American hops while maintaining perfect balance.
+
+## Brewing Highlights
+
+- **Malt Bill:** Pilsner malt with a touch of Carapils for body
+- **Hops:** Cascade, Centennial, and Citra for tropical fruit character
+- **Fermentation:** US-05 yeast at 18°C for clean fermentation
+- **Dry Hopping:** Double dry-hopped for maximum aroma
+
+## Flavor Profile
+
+**Appearance:** Golden with brilliant clarity and white foam
+
+**Aroma:** Grapefruit, mango, passion fruit, pine
+
+**Taste:** Citrusy and fruity with balanced malt backbone, moderate bitterness, refreshing finish
+
+**Mouthfeel:** Light to medium body, high carbonation
+
+## Data-Driven Brewing
+
+This beer was part of a research project analyzing fermentation kinetics in real-time. Over 10,000 data points were collected during the brewing process!
+
+## Food Pairing
+
+Excellent with burgers, spicy wings, fish tacos, or fresh salads. Serve at 6-8°C.
+    `,
+    de: `
+# Campus Pale Ale
+
+## Innovation trifft Tradition
+
+Im Mai 2024 von unseren Data Science-Studierenden im Rahmen eines interdisziplinären Projekts gebraut, das Brauwissenschaft mit Datenanalyse kombiniert. Dieses Bier präsentiert modernen amerikanischen Hopfen bei perfekter Balance.
+
+## Brau-Highlights
+
+- **Malzbill:** Pilsner Malz mit einem Hauch Carapils für Körper
+- **Hopfen:** Cascade, Centennial und Citra für tropischen Fruchtcharakter
+- **Gärung:** US-05 Hefe bei 18°C für saubere Gärung
+- **Kalthopfung:** Doppelt kaltgehopft für maximales Aroma
+
+## Geschmacksprofil
+
+**Aussehen:** Golden mit brillanter Klarheit und weißem Schaum
+
+**Geruch:** Grapefruit, Mango, Passionsfrucht, Kiefer
+
+**Geschmack:** Zitrusartig und fruchtig mit ausgewogener Malzbasis, moderate Bittere, erfrischender Abgang
+
+**Mundgefühl:** Leicht bis mittelkräftig, hohe Kohlensäure
+
+## Datengesteuertes Brauen
+
+Dieses Bier war Teil eines Forschungsprojekts zur Analyse der Gärungskinetik in Echtzeit. Über 10.000 Datenpunkte wurden während des Brauprozesses gesammelt!
+
+## Food Pairing
+
+Hervorragend zu Burgern, scharfen Wings, Fish Tacos oder frischen Salaten. Servieren bei 6-8°C.
+    `,
+  },
+  author: "Data Science Students SS 2024",
+  date: "2024-05-20",
+  readTime: "4 min",
+  category: "Fertige Biere",
+  tags: ["Pale Ale", "Hopfig", "Amerikanisch", "Craft Beer"],
+  featured: false,
+  images: ["/images/Wiener_Lager.jpg"], // Placeholder - ersetzen Sie mit echtem Bild
+  brewingData: {
+    originalGravity: 1.054,
+    finalGravity: 1.013,
+    abv: 5.4,
+    ibu: 42,
+    srm: 6,
+    efficiency: 76,
+  },
+  ratings: {
+    overall: 4.5,
+    count: 18,
+    categories: {
+      appearance: 4.7,  // Brilliant golden, great clarity
+      aroma: 4.8,       // Tropical fruits, citrus, pine
+      taste: 4.4,       // Hoppy, balanced bitterness
+      mouthfeel: 4.3,   // Light body, crisp finish
+      overall: 4.5,     // Great American-style pale ale
+    },
+    distribution: { 1: 0, 2: 0, 3: 3, 4: 8, 5: 7 },
+  },
+},
 
 ];
